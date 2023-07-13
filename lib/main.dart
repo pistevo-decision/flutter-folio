@@ -57,7 +57,7 @@ class AppBootstrapper extends StatefulWidget {
   const AppBootstrapper({Key? key}) : super(key: key);
 
   @override
-  _AppBootstrapperState createState() => _AppBootstrapperState();
+  State<AppBootstrapper> createState() => _AppBootstrapperState();
 }
 
 class _AppBootstrapperState extends State<AppBootstrapper> {
