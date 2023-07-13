@@ -4,7 +4,6 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_folio/_utils/string_utils.dart';
 import 'package:flutter_folio/_widgets/app_image.dart';
-import 'package:flutter_folio/commands/books/update_placed_scrap_command.dart';
 import 'package:flutter_folio/core_packages.dart';
 import 'package:flutter_folio/data/book_data.dart';
 import 'package:flutter_folio/views/editor_page/placed_scrap_keyboard_listener.dart';
@@ -105,55 +104,60 @@ class _TextBoxState extends State<_TextBox> {
   @override
   Widget build(BuildContext context) {
     // Write the text to
-    void _handleTextChanged(String value) {
-      // Update local data immediately, but debounce the firebase call
-      PlacedScrapItem newItem = widget.item.copyWith(data: value);
-      UpdatePageScrapCommand().run(newItem, localOnly: true);
-      // Debounce db update
-      textChangedDebounce.run(() => UpdatePageScrapCommand().run(newItem));
-      setState(() => _txtValue = value);
-    }
+    // void _handleTextChanged(String value) {
+    //   // Update local data immediately, but debounce the firebase call
+    //   PlacedScrapItem newItem = widget.item.copyWith(data: value);
+    //   UpdatePageScrapCommand().run(newItem, localOnly: true);
+    //   // Debounce db update
+    //   textChangedDebounce.run(() => UpdatePageScrapCommand().run(newItem));
+    //   setState(() => _txtValue = value);
+    // }
 
-    String promptText = "Type something...";
+    // String promptText = "Type something...";
     return Container(
       padding: const EdgeInsets.all(8.0),
       color: widget.item.boxStyle?.bgColor ?? Colors.transparent,
       child: LayoutBuilder(builder: (_, constraints) {
         return AutoSizeText(
-          StringUtils.defaultOnEmpty(_txtValue, promptText),
+          widget.item.data,
+          // StringUtils.defaultOnEmpty(_txtValue, promptText),
           minFontSize: 10,
           maxFontSize: 999,
-          textBuilder: (size, style, numLines) {
-            style = style.copyWith(color: widget.item.boxStyle?.fgColor ?? Colors.black);
-            TextAlign textAlign = widget.item.boxStyle?.align ?? TextAlign.left;
-            return widget.isSelected
-                ? InlineTextEditor(
-                    widget.item.data,
-                    autoFocus: false,
-                    alignVertical: TextAlignVertical.center,
-                    align: textAlign,
-                    width: constraints.maxWidth,
-                    promptText: promptText,
-                    maxLines: 99,
-                    enableContextMenu: false,
-                    onFocusOut: _handleTextChanged,
-                    // SB: Due to a bug in Flutter where we were missing focusOut events, we're saving on every keystroke for this editor.// TODO: Try and get reproduction steps for this...
-                    onChanged: _handleTextChanged,
-                    style: style.copyWith(fontSize: size, fontFamily: boxFontToFamily(widget.item.boxStyle?.font)),
-                  )
-                : Container(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Text(StringUtils.defaultOnEmpty(widget.item.data, promptText),
-                          style:
-                              style.copyWith(fontSize: size, fontFamily: boxFontToFamily(widget.item.boxStyle?.font)),
-                          maxLines: 99,
-                          textAlign: textAlign),
-                    ),
-                  );
-          },
-          style: const TextStyle(fontSize: 999, letterSpacing: 0, height: 1.25),
+          style: TextStyle(
+              fontSize: 999, letterSpacing: 0, height: 1.25, color: widget.item.boxStyle?.fgColor ?? Colors.black),
+          textAlign: widget.item.boxStyle?.align ?? TextAlign.left,
+          maxLines: 99,
+
+          // textBuilder: (size, style, numLines) {
+          //   // style = style.copyWith(color: widget.item.boxStyle?.fgColor ?? Colors.black);
+          //   // TextAlign textAlign = widget.item.boxStyle?.align ?? TextAlign.left;
+          //   return widget.isSelected
+          //       ? InlineTextEditor(
+          //           // widget.item.data,
+          //           //??? autoFocus: false,
+          //           alignVertical: TextAlignVertical.center,
+          //           // align: textAlign,
+          //           // width: constraints.maxWidth,
+          //           promptText: promptText,
+          //           // maxLines: 99,
+          //           enableContextMenu: false,
+          //           onFocusOut: _handleTextChanged,
+          //           // SB: Due to a bug in Flutter where we were missing focusOut events, we're saving on every keystroke for this editor.// TODO: Try and get reproduction steps for this...
+          //           onChanged: _handleTextChanged,
+          //           style: style.copyWith(fontSize: size, fontFamily: boxFontToFamily(widget.item.boxStyle?.font)),
+          //         )
+          //       : Container(
+          //           alignment: Alignment.center,
+          //           child: SizedBox(
+          //             width: double.infinity,
+          //             child: Text(StringUtils.defaultOnEmpty(widget.item.data, promptText),
+          //                 style:
+          //                     style.copyWith(fontSize: size, fontFamily: boxFontToFamily(widget.item.boxStyle?.font)),
+          //                 maxLines: 99,
+          //                 textAlign: textAlign),
+          //           ),
+          //         );
+          // },
         );
       }),
     );

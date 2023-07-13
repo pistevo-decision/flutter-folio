@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_folio/_widgets/listenable_builder.dart';
 import 'package:flutter_folio/_widgets/sized_and_translated.dart';
 import 'package:flutter_folio/core_packages.dart';
 import 'package:flutter_folio/views/editor_page/scrapboard/movable_scrap_selection_box.dart';
@@ -75,13 +74,13 @@ class MovableScrapState extends State<MovableScrap> {
                   onRotateDrag: (value) => widget.onRotateDragged(widget.data, value),
                   onDragEnded: () => widget.onCornerDragComplete(widget.data),
                   isVisible: widget.showControls,
+                  btnSize: btnSize,
+                  showControls: widget.showControls,
                   child: Padding(
                     padding: EdgeInsets.all(3 + btnSize),
                     // Rotate the box content according to .rot setting
                     child: _DraggableHitArea(this, child: widget.child),
                   ),
-                  btnSize: btnSize,
-                  showControls: widget.showControls,
                 ),
               ),
             ],

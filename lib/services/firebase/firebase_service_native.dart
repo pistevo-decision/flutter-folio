@@ -6,10 +6,13 @@ import 'package:flutter_folio/_utils/logger.dart';
 import 'package:flutter_folio/data/app_user.dart';
 import 'package:flutter_folio/services/firebase/firebase_service.dart';
 
+class MyObject {
+  set documentId(String documentId) {}
+}
+
 class NativeFirebaseService extends FirebaseService {
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
   FirebaseAuth get auth => FirebaseAuth.instance;
-
   DocumentReference get userDoc => firestore.doc(userPath.join("/"));
 
   @override
@@ -53,8 +56,9 @@ class NativeFirebaseService extends FirebaseService {
   @override
   Stream<Map<String, dynamic>>? getDocStream(List<String> keys) {
     return _getDoc(keys)?.snapshots().map((doc) {
-      final data = doc.data() ?? {};
-      return data..['documentId'] = doc.id;
+      final MyObject data = (doc.data() ?? {'documentId': doc.id}) as MyObject;
+      return (data..documentId = doc.id) as Map<String, dynamic>;
+      // return (data..['documentId'] = doc.id) as Map<String, dynamic>;
     });
   }
 
@@ -63,9 +67,13 @@ class NativeFirebaseService extends FirebaseService {
     return _getCollection(keys)?.snapshots().map(
       (QuerySnapshot snapshot) {
         return snapshot.docs.map((d) {
-          final data = d.data();
-          return data..['documentId'] = d.id;
+          final MyObject data = d.data() as MyObject;
+          return (data..documentId = d.id) as Map<String, dynamic>;
         }).toList();
+        // return snapshot.docs.map((d) {
+        //   final data = d.data();
+        //   return data..['documentId'] = d.id;
+        // }).toList();
       },
     );
   }
@@ -99,7 +107,8 @@ class NativeFirebaseService extends FirebaseService {
     try {
       DocumentSnapshot? d = (await _getDoc(keys)?.get());
       if (d != null) {
-        return (d.data() ?? {})..['documentId'] = d.id;
+        return {d.id: (d.data() ?? {})};
+        // return (d.data() ?? {})..['documentId'] = d.id;
       }
     } catch (e) {
       print(e);
@@ -113,10 +122,10 @@ class NativeFirebaseService extends FirebaseService {
     QuerySnapshot? snapshot = (await _getCollection(keys)?.get());
     if (snapshot != null) {
       for (final d in snapshot.docs) {
-        (d.data())['documentId'] = d.id;
+        (d.data() as MyObject).documentId = d.id;
       }
     }
-    return snapshot?.docs.map((d) => (d.data())).toList();
+    return snapshot?.docs.map((d) => (d.data()) as Map<String, dynamic>).toList();
   }
 
   DocumentReference? _getDoc(List<String> keys) {
