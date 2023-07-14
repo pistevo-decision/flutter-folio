@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_folio/_utils/logger.dart';
 
 class MacosWindowUtils {
   static const methodChannel = MethodChannel("flutterfolio.com/io");
@@ -18,7 +19,7 @@ class MacosWindowUtils {
       final double h = await methodChannel.invokeMethod("getTitlebarHeight") as double;
       _calculatedTitlebarHeight = max(h, kMinTitlebarHeight);
     } catch (e) {
-      print("MethodChannel error: $e");
+      log("MethodChannel error: $e");
       _calculatedTitlebarHeight = kDefaultTitlebarHeight;
     }
     return _calculatedTitlebarHeight;
@@ -29,7 +30,7 @@ class MacosWindowUtils {
     try {
       await methodChannel.invokeMethod("zoom");
     } catch (e) {
-      print("MethodChannel error: $e");
+      log("MethodChannel error: $e");
     }
   }
 }

@@ -33,13 +33,13 @@ class SeparatedRow extends StatelessWidget {
       if (i > 0) c.insert(i, separatorBuilder());
     }
     Widget row = Row(
-      children: c,
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
       textBaseline: textBaseline,
       textDirection: textDirection,
       verticalDirection: verticalDirection,
+      children: c,
     );
     return Padding(padding: padding, child: row);
   }
@@ -76,13 +76,13 @@ class SeparatedColumn extends StatelessWidget {
       if (i > 0) c.insert(i, separatorBuilder());
     }
     Widget col = Column(
-      children: c,
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
       textBaseline: textBaseline,
       textDirection: textDirection,
       verticalDirection: verticalDirection,
+      children: c,
     );
     return Padding(padding: padding, child: col);
   }

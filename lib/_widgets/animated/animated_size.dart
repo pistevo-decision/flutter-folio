@@ -44,7 +44,12 @@ class AnimatedHeight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _AnimatedSize(child: child, duration: duration, begin: Size(0, begin), end: Size(0, end), curve: curve);
+    return _AnimatedSize(
+        duration: duration,
+        begin: Size(0, begin),
+        end: Size(0, end),
+        curve: curve,
+        child: child);
   }
 }
 
@@ -66,6 +71,11 @@ class AnimatedWidth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _AnimatedSize(child: child, duration: duration, begin: Size(begin, 0), end: Size(end, 0), curve: curve);
+    return _AnimatedSize(
+        duration: duration,
+        begin: Size(begin, 0),
+        end: Size(end, 0),
+        curve: curve,
+        child: child);
   }
 }

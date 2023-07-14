@@ -13,7 +13,7 @@ class MainAppScaffold extends StatefulWidget {
   final bool showAppBar;
 
   @override
-  _MainAppScaffoldState createState() => _MainAppScaffoldState();
+  State<MainAppScaffold> createState() => _MainAppScaffoldState();
 }
 
 class _MainAppScaffoldState extends State<MainAppScaffold> with TickerProviderStateMixin {
@@ -26,7 +26,7 @@ class _MainAppScaffoldState extends State<MainAppScaffold> with TickerProviderSt
       value: appTheme,
       child: Directionality(
         textDirection: textDirection,
-        // TODO: Log a bug on the backspace issue that requires this wrapper
+        // Log a bug on the backspace issue that requires this wrapper
         child: Navigator(
           onPopPage: (_, __) => false,
           pages: [
@@ -35,7 +35,7 @@ class _MainAppScaffoldState extends State<MainAppScaffold> with TickerProviderSt
                 child: StyledContextMenuOverlay(
               // Tooltip and popup panel support
               child: AnchoredPopups(
-                //TODO: Try and remove this navigator + page + builder
+                //Try and remove this navigator + page + builder
                 child: Navigator(
                   onPopPage: (Route route, result) {
                     if (route.didPop(result)) return true;

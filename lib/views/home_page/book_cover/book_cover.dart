@@ -29,7 +29,7 @@ class BookCoverWidget extends StatefulWidget {
   final void Function(Offset globalPos)? onPressed;
 
   @override
-  _BookCoverWidgetState createState() => _BookCoverWidgetState();
+  State<BookCoverWidget> createState() => _BookCoverWidgetState();
 }
 
 class _BookCoverWidgetState extends State<BookCoverWidget> {

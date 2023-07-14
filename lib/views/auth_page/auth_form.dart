@@ -13,13 +13,13 @@ class AuthForm extends StatefulWidget {
   const AuthForm({Key? key}) : super(key: key);
 
   @override
-  _AuthFormState createState() => _AuthFormState();
+  State<AuthForm> createState() => _AuthFormState();
 }
 
-enum _AuthFormMode { CreateAccount, SignIn }
+enum _AuthFormMode { createAccount, signIn }
 
 class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
-  _AuthFormMode _formMode = _AuthFormMode.SignIn;
+  _AuthFormMode _formMode = _AuthFormMode.signIn;
   _AuthFormMode get formMode => _formMode;
   set formMode(_AuthFormMode formMode) => setState(() => _formMode = formMode);
 
@@ -36,7 +36,7 @@ class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
   String get _defaultPass => enableDebugLogin ? "password" : "";
   bool get enableSubmit {
     bool emailAndPassAreValid = EmailValidator.validate(_emailController.text) && _passController.text.length >= 6;
-    //print("Enable submit??${_emailController.text}");
+    //log("Enable submit??${_emailController.text}");
     return emailAndPassAreValid;
   }
 
@@ -62,7 +62,7 @@ class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
           child: LayoutBuilder(
             builder: (_, constraints) {
               AppTheme theme = context.watch();
-              bool isCreatingAccount = formMode == _AuthFormMode.CreateAccount;
+              bool isCreatingAccount = formMode == _AuthFormMode.createAccount;
               String headerText = isCreatingAccount ? "Welcome to flutter folio." : "Welcome back!";
               String descText = isCreatingAccount
                   ? "Create an account to start your scrapbook!"
@@ -181,15 +181,15 @@ class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
                                         contextMenu:
                                             const LinkContextMenu(url: 'https://github.com/gskinnerTeam/flutter-folio'),
                                         child: SimpleBtn(
-                                          child: AppIcon(AppIcons.website, color: theme.greyStrong, size: 24),
                                           onPressed: _handleWebsitePressed,
+                                          child: AppIcon(AppIcons.website, color: theme.greyStrong, size: 24),
                                         ),
                                       ),
                                       ContextMenuRegion(
                                         contextMenu: const LinkContextMenu(url: "https://flutter.gskinner.com"),
                                         child: SimpleBtn(
-                                          child: AppIcon(AppIcons.github, color: theme.greyStrong, size: 24),
                                           onPressed: _handleGitPressed,
+                                          child: AppIcon(AppIcons.github, color: theme.greyStrong, size: 24),
                                         ),
                                       ),
                                     ],
@@ -218,10 +218,10 @@ class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
     bool success = await load(() async => await AuthenticateUserCommand().run(
           email: _emailController.text,
           pass: _passController.text,
-          createNew: formMode == _AuthFormMode.CreateAccount,
+          createNew: formMode == _AuthFormMode.createAccount,
         ));
     if (!success) {
-      errorText = formMode == _AuthFormMode.SignIn
+      errorText = formMode == _AuthFormMode.signIn
           ? "Your account or password is incorrect."
           : "Unable to create an account, that email is already in use.";
     }
@@ -229,14 +229,16 @@ class _AuthFormState extends State<AuthForm> with LoadingStateMixin {
 
   void _handleSwitchViewPressed() {
     errorText = "";
-    bool isCreatingAccount = formMode == _AuthFormMode.CreateAccount;
-    formMode = isCreatingAccount ? _AuthFormMode.SignIn : _AuthFormMode.CreateAccount;
+    bool isCreatingAccount = formMode == _AuthFormMode.createAccount;
+    formMode = isCreatingAccount ? _AuthFormMode.signIn : _AuthFormMode.createAccount;
     _emailController.text = "";
     _passController.text = "";
     InputUtils.unFocus();
   }
 
-  void _handleGitPressed() => launch("https://github.com/gskinnerTeam/flutter-folio");
+  void _handleGitPressed() =>
+      // launchUrl(Uri("https://github.com/gskinnerTeam/flutter-folio"));
+      launchUrl(Uri(scheme: "https", host: "github.com", path: "gskinnerTeam/flutter-folio"));
 
-  void _handleWebsitePressed() => launch("https://flutter.gskinner.com");
+  void _handleWebsitePressed() => launchUrl(Uri(scheme: "https", host: "flutter.gskinner.com"));
 }

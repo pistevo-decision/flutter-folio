@@ -93,12 +93,10 @@ class _TextBox extends StatefulWidget {
 
 class _TextBoxState extends State<_TextBox> {
   Debouncer textChangedDebounce = Debouncer(const Duration(milliseconds: 150));
-  String? _txtValue;
 
   @override
   void initState() {
     super.initState();
-    _txtValue = widget.item.data;
   }
 
   @override
@@ -142,7 +140,7 @@ class _TextBoxState extends State<_TextBox> {
           //           // maxLines: 99,
           //           enableContextMenu: false,
           //           onFocusOut: _handleTextChanged,
-          //           // SB: Due to a bug in Flutter where we were missing focusOut events, we're saving on every keystroke for this editor.// TODO: Try and get reproduction steps for this...
+          //           // SB: Due to a bug in Flutter where we were missing focusOut events, we're saving on every keystroke for this editor.//  Try and get reproduction steps for this...
           //           onChanged: _handleTextChanged,
           //           style: style.copyWith(fontSize: size, fontFamily: boxFontToFamily(widget.item.boxStyle?.font)),
           //         )

@@ -8,7 +8,7 @@ class WindowsTitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WindowButtonColors _btnColors = WindowButtonColors(
+    final WindowButtonColors btnColors = WindowButtonColors(
       iconNormal: Colors.black,
       mouseOver: Colors.black.withOpacity(.2),
       mouseDown: Colors.black.withOpacity(.3),
@@ -25,8 +25,8 @@ class WindowsTitleBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MinimizeWindowButton(colors: _btnColors),
-                MaximizeWindowButton(colors: _btnColors),
+                MinimizeWindowButton(colors: btnColors),
+                MaximizeWindowButton(colors: btnColors),
                 CloseWindowButton(),
               ],
             ),

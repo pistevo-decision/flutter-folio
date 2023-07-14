@@ -32,7 +32,7 @@ class PrimaryBtn extends StatelessWidget {
       normalColors: BtnColors(bg: theme.accent1, fg: theme.surface1),
       hoverColors: BtnColors(bg: theme.focus, fg: theme.surface1),
       onPressed: onPressed,
-      child: BtnContent(child: child, label: label, icon: icon, leadingIcon: leadingIcon, isCompact: isCompact),
+      child: BtnContent(label: label, icon: icon, leadingIcon: leadingIcon, isCompact: isCompact, child: child),
     );
   }
 }
@@ -60,7 +60,7 @@ class SecondaryBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppTheme theme = context.watch();
-    Widget content = BtnContent(child: child, label: label, icon: icon, leadingIcon: leadingIcon, isCompact: isCompact);
+    Widget content = BtnContent(label: label, icon: icon, leadingIcon: leadingIcon, isCompact: isCompact, child: child);
     if (isCompact) {
       return RawBtn(
           cornerRadius: cornerRadius,
@@ -106,10 +106,10 @@ class SimpleBtn extends StatelessWidget {
       normalColors: normalColors,
       hoverColors: hoverColors,
       focusMargin: focusMargin ?? 0,
-      child: child,
       enableShadow: false,
       onPressed: onPressed,
       ignoreDensity: ignoreDensity ?? true,
+      child: child,
     );
   }
 }
@@ -153,12 +153,12 @@ class IconBtn extends StatelessWidget {
     int extraPadding = enableTouchMode ? 3 : 0;
     return SimpleBtn(
         ignoreDensity: ignoreDensity,
+        onPressed: onPressed,
         child: AnimatedPadding(
           duration: Times.fast,
           curve: Curves.easeOut,
           padding: padding ?? EdgeInsets.all(Insets.xs + extraPadding),
           child: Icon(icon, color: color ?? Colors.black, size: 20),
-        ),
-        onPressed: onPressed);
+        ));
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter_folio/commands/commands.dart';
 
-//TODO: Should we pull this feature completely since it's not supported on Windows?
 class RefreshMenuBarCommand extends BaseAppCommand {
   Future<void> run() async {
     // bool isDesktop = (UniversalPlatform.isWindows || UniversalPlatform.isMacOS || UniversalPlatform.isLinux);
@@ -24,7 +23,7 @@ class RefreshMenuBarCommand extends BaseAppCommand {
     //             //shortcut: LogicalKeySet(LogicalKeyboardKey.meta, LogicalKeyboardKey.escape),
     //             onClicked: () => exit(0)),
     //       ]),
-    //       //TODO: Add all the firebase books and sub pages into the menu??? Stretch goal!
+
     //       // if (appModel.isLoggedIn) ...{
     //       //   Submenu(label: 'View', children: [
     //       //     MenuItem(
@@ -33,7 +32,7 @@ class RefreshMenuBarCommand extends BaseAppCommand {
     //       //         shortcut: LogicalKeySet(LogicalKeyboardKey.meta, LogicalKeyboardKey.numpad1),
     //       //         onClicked: () {}),
     //       //     MenuDivider(),
-    //       //     // TODO: Maybe should pump the current state of the app in here.
+
     //       //     // This requires watching both user.books and user.books[i].pages for every item. Not cheap... think it over.
     //       //     // Maybe just deeplinking to books makes the point? Would be a cool demo to see all the firebase page names right in the file file menu...
     //       //     Submenu(label: 'Book 1', children: [

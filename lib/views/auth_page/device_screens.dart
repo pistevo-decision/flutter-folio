@@ -22,7 +22,9 @@ class DeviceScreens extends StatelessWidget {
                 double offsetX = 0;
                 // Define a minWidth for each aspect ratio, below this we'll offset the content on the hz axis to center it
                 double width = portraitMode ? 600 : 1200;
-                if (constraints.maxWidth < width) offsetX = -(width - constraints.maxWidth) / 2;
+                if (constraints.maxWidth < width) {
+                  offsetX = -(width - constraints.maxWidth) / 2;
+                }
                 // Create the stack of images, top-left aligned with hard-coded sizes to keep it simple
                 List<Widget> images;
                 if (portraitMode) {

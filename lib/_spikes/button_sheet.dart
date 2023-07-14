@@ -10,7 +10,7 @@ class ButtonSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const underline = BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey)));
-    Widget _center(Widget w) => Container(child: w, height: 100, decoration: underline, alignment: Alignment.center);
+    Widget center(Widget w) => Container(height: 100, decoration: underline, alignment: Alignment.center, child: w);
     return GestureDetector(
       onTap: InputUtils.unFocus,
       child: Center(
@@ -24,7 +24,7 @@ class ButtonSheet extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             PrimaryBtn(onPressed: () {}, label: "Primary"),
@@ -32,7 +32,7 @@ class ButtonSheet extends StatelessWidget {
                             PrimaryBtn(onPressed: () {}, isCompact: true, label: "Primary-Compact"),
                           ],
                         )),
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             PrimaryBtn(onPressed: () {}, isCompact: true, icon: Icons.padding),
@@ -40,7 +40,7 @@ class ButtonSheet extends StatelessWidget {
                             PrimaryBtn(onPressed: () {}, isCompact: false, icon: Icons.padding, label: "Icon & Label"),
                           ],
                         )),
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             PrimaryBtn(onPressed: () {}, isCompact: true, label: "Text w/ Icon", icon: Icons.padding),
@@ -53,7 +53,7 @@ class ButtonSheet extends StatelessWidget {
                                 label: "leading"),
                           ],
                         )),
-                        _center(PrimaryBtn(onPressed: () {})),
+                        center(PrimaryBtn(onPressed: () {})),
                       ],
                     ),
                   ),
@@ -62,7 +62,7 @@ class ButtonSheet extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SecondaryBtn(onPressed: () {}, label: "Primary"),
@@ -70,7 +70,7 @@ class ButtonSheet extends StatelessWidget {
                             SecondaryBtn(onPressed: () {}, isCompact: true, label: "Primary-Compact"),
                           ],
                         )),
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SecondaryBtn(onPressed: () {}, isCompact: true, icon: Icons.padding),
@@ -79,7 +79,7 @@ class ButtonSheet extends StatelessWidget {
                                 onPressed: () {}, isCompact: false, icon: Icons.padding, label: "Icon & Label"),
                           ],
                         )),
-                        _center(Row(
+                        center(Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SecondaryBtn(onPressed: () {}, isCompact: true, label: "Text w/ Icon", icon: Icons.padding),
@@ -92,7 +92,7 @@ class ButtonSheet extends StatelessWidget {
                                 label: "leading"),
                           ],
                         )),
-                        _center(SecondaryBtn(onPressed: () {})),
+                        center(SecondaryBtn(onPressed: () {})),
                       ],
                     ),
                   ),

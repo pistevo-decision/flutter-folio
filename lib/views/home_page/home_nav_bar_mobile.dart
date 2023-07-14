@@ -69,14 +69,14 @@ class HomeNavTabMenu extends StatelessWidget {
 class _NewFolioFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void _handleNewPressed() => showStyledBottomSheet<void>(context, child: const _NewFolioCard());
+    void handleNewPressed() => showStyledBottomSheet<void>(context, child: const _NewFolioCard());
 
     Decoration circleDec(Color c) => ShapeDecoration(shape: const CircleBorder(), color: c);
     AppTheme theme = Provider.of(context);
     double size = 72;
     return SimpleBtn(
       cornerRadius: 99,
-      onPressed: _handleNewPressed,
+      onPressed: handleNewPressed,
       // Add some padding, so we get a mouse-over effect from the SimpleBtn
       child: Padding(
         padding: EdgeInsets.all(Insets.sm),

@@ -10,7 +10,8 @@ import 'my_movable_box.dart';
 double rnd([double value = 1]) => Random().nextDouble() * value;
 List<BoxTransformData> _boxes = List.generate(
   200,
-  (index) => BoxTransformData(offset: Offset(rnd(600), rnd(600)), scale: .5 + rnd()),
+  (index) =>
+      BoxTransformData(offset: Offset(rnd(600), rnd(600)), scale: .5 + rnd()),
 );
 
 // Create a Stack that will render each Box
@@ -18,7 +19,7 @@ class OptimizedDragStack extends StatefulWidget {
   const OptimizedDragStack({Key? key}) : super(key: key);
 
   @override
-  _OptimizedDragStackState createState() => _OptimizedDragStackState();
+  State<OptimizedDragStack> createState() => _OptimizedDragStackState();
 }
 
 class _OptimizedDragStackState extends State<OptimizedDragStack> {

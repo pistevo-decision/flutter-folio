@@ -59,13 +59,13 @@ class ScrapPopupPanelColor extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 6),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(label, style: TextStyles.caption.copyWith(color: theme.grey)),
                   const MaterialIcon(Icons.chevron_right, size: 16),
                   const Spacer(),
                   _ColorSwatch(value, isSelected: false)
                 ],
-                crossAxisAlignment: CrossAxisAlignment.center,
               ),
             ),
           )

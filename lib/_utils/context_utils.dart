@@ -1,3 +1,4 @@
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:flutter/material.dart';
 
 class ContextUtils {
@@ -7,7 +8,7 @@ class ContextUtils {
       RenderBox? rb = c.findRenderObject() as RenderBox?;
       return rb?.size ?? Size.zero;
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return const Size(1, 1);
   }
@@ -16,7 +17,7 @@ class ContextUtils {
     try {
       return (c.findRenderObject() as RenderBox?)?.localToGlobal(local) ?? Offset.zero;
     } catch (e) {
-      //print(e);
+      //log(e);
     }
     return Offset.zero;
   }
@@ -25,7 +26,7 @@ class ContextUtils {
     try {
       return (c.findRenderObject() as RenderBox?)?.globalToLocal(global) ?? Offset.zero;
     } catch (e) {
-      //print(e);
+      //log(e);
     }
     return Offset.zero;
   }

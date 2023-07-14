@@ -19,7 +19,7 @@ class ContentPickerScrapsPanel extends StatefulWidget {
   final bool isVisible;
 
   @override
-  _ContentPickerScrapsPanelState createState() => _ContentPickerScrapsPanelState();
+  State<ContentPickerScrapsPanel> createState() => _ContentPickerScrapsPanelState();
 }
 
 class _ContentPickerScrapsPanelState extends State<ContentPickerScrapsPanel> with RawKeyboardListenerMixin {
@@ -95,7 +95,7 @@ class _ContentPickerScrapsPanelState extends State<ContentPickerScrapsPanel> wit
   // Look for Delete or Backspace keys
   @override
   void handleKeyDown(RawKeyEvent value) {
-    // Using manual-listener because RawKeyboardListener Widget was unpredictable with it's focus. TODO: Log some sort of bug on this? Or clarify usage of the Widget.
+    // Using manual-listener because RawKeyboardListener Widget was unpredictable with it's focus.  Log some sort of bug on this? Or clarify usage of the Widget.
     if (widget.isVisible) {
       bool deletePressed =
           value.logicalKey == LogicalKeyboardKey.delete || value.logicalKey == LogicalKeyboardKey.backspace;

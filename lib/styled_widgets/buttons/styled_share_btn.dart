@@ -16,7 +16,7 @@ class StyledSharedBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _handleSharePressed() {
+    void handleSharePressed() {
       // Close popup when pressed
       AnchoredPopups.of(context)?.hide();
       CopyShareLinkCommand().run(book.documentId);
@@ -24,15 +24,15 @@ class StyledSharedBtn extends StatelessWidget {
 
     AppTheme theme = context.watch();
     return AnchoredPopUpRegion.hover(
-        //TODO: anchors should be configurable here?
+        // anchors should be configurable here?
         anchor: Alignment.centerRight,
         popAnchor: Alignment.centerLeft,
         popChild: const StyledTooltip("Copy Share Link", arrowAlignment: Alignment.centerLeft),
         child: SimpleBtn(
+            onPressed: handleSharePressed,
             child: Padding(
               padding: EdgeInsets.all(Insets.sm),
               child: Icon(Icons.share, color: iconColor ?? theme.surface1),
-            ),
-            onPressed: _handleSharePressed));
+            )));
   }
 }

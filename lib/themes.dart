@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum ThemeType {
-  Orange_Light,
+  orangeLight,
 }
 
 /// AppTheme is the primary means of styling colors in your application.
@@ -9,7 +9,7 @@ enum ThemeType {
 //      AppTheme theme = context.watch();
 //      return Container(color: theme.accentColor);
 class AppTheme {
-  static ThemeType defaultTheme = ThemeType.Orange_Light;
+  static ThemeType defaultTheme = ThemeType.orangeLight;
 
   final ThemeType type;
   final bool isDark;
@@ -47,7 +47,7 @@ class AppTheme {
   /// Creates an AppTheme from a provided Type.
   factory AppTheme.fromType(ThemeType t) {
     switch (t) {
-      case ThemeType.Orange_Light:
+      case ThemeType.orangeLight:
         return AppTheme(
           isDark: false,
           type: t,
@@ -96,7 +96,52 @@ class AppTheme {
           selectionColor: surface1,
         ),
         highlightColor: shift(accent1, .1),
-        toggleableActiveColor: accent1);
+        checkboxTheme: CheckboxThemeData(
+          fillColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return null;
+            }
+            if (states.contains(MaterialState.selected)) {
+              return accent1;
+            }
+            return null;
+          }),
+        ),
+        radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return null;
+            }
+            if (states.contains(MaterialState.selected)) {
+              return accent1;
+            }
+            return null;
+          }),
+        ),
+        switchTheme: SwitchThemeData(
+          thumbColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return null;
+            }
+            if (states.contains(MaterialState.selected)) {
+              return accent1;
+            }
+            return null;
+          }),
+          trackColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return null;
+            }
+            if (states.contains(MaterialState.selected)) {
+              return accent1;
+            }
+            return null;
+          }),
+        ));
     // All done, return the ThemeData
     return t;
   }
@@ -107,7 +152,8 @@ class AppTheme {
   Color shift(Color c, double amt) {
     amt *= (isDark ? -1 : 1);
     var hslc = HSLColor.fromColor(c); // Convert to HSL
-    double lightness = (hslc.lightness + amt).clamp(0, 1.0) as double; // Add/Remove lightness
+    double lightness =
+        (hslc.lightness + amt).clamp(0, 1.0) as double; // Add/Remove lightness
     return hslc.withLightness(lightness).toColor(); // Convert back to Color
   }
 }

@@ -14,7 +14,7 @@ class ScrapContextMenu extends StatefulWidget {
   final PlacedScrapItem scrap;
 
   @override
-  _ScrapContextMenuState createState() => _ScrapContextMenuState();
+  State<ScrapContextMenu> createState() => _ScrapContextMenuState();
 }
 
 class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuStateMixin {
@@ -22,12 +22,12 @@ class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuSta
   Widget build(BuildContext context) {
     // Declare btn handlers inside the build method to avoid boilerplate passing of context ref
 
-    void _handleForwardPressed() => ShiftPlacedScrapsSortOrderCommand().run(1, widget.scrap);
-    void _handleBackPressed() => ShiftPlacedScrapsSortOrderCommand().run(-1, widget.scrap);
-    void _handleCoverPhotoPressed() async => UpdateCurrentBookCoverPhotoCommand().run(widget.scrap);
-    void _handleSaveImagePressed() async => SaveImageToDiskCommand().run(widget.scrap.data);
+    void handleForwardPressed() => ShiftPlacedScrapsSortOrderCommand().run(1, widget.scrap);
+    void handleBackPressed() => ShiftPlacedScrapsSortOrderCommand().run(-1, widget.scrap);
+    void handleCoverPhotoPressed() async => UpdateCurrentBookCoverPhotoCommand().run(widget.scrap);
+    void handleSaveImagePressed() async => SaveImageToDiskCommand().run(widget.scrap.data);
 
-    void _handleDeletePressed() => DeletePageScrapCommand().run(widget.scrap);
+    void handleDeletePressed() => DeletePageScrapCommand().run(widget.scrap);
 
     String? currentCoverPhoto = context.select((BooksModel m) => m.currentBook)?.imageUrl;
     bool isCoverPhoto = widget.scrap.isPhoto && widget.scrap.data == currentCoverPhoto;
@@ -40,19 +40,19 @@ class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuSta
           context,
           ContextMenuButtonConfig(
             "Move forward",
-            icon: const ContextMenuIcon(icon: AppIcons.move_forward),
-            iconHover: const ContextMenuIconHovered(icon: AppIcons.move_forward),
+            icon: const ContextMenuIcon(icon: AppIcons.moveForward),
+            iconHover: const ContextMenuIconHovered(icon: AppIcons.moveForward),
             shortcutLabel: "ctrl + ]",
-            onPressed: () => handlePressed(context, _handleForwardPressed),
+            onPressed: () => handlePressed(context, handleForwardPressed),
           ),
         ),
         buttonBuilder(
             context,
             ContextMenuButtonConfig("Send backward",
                 shortcutLabel: "ctrl + [",
-                icon: const ContextMenuIcon(icon: AppIcons.send_backward),
-                iconHover: const ContextMenuIconHovered(icon: AppIcons.send_backward),
-                onPressed: () => handlePressed(context, _handleBackPressed))),
+                icon: const ContextMenuIcon(icon: AppIcons.sendBackward),
+                iconHover: const ContextMenuIconHovered(icon: AppIcons.sendBackward),
+                onPressed: () => handlePressed(context, handleBackPressed))),
         const ContextDivider(),
         if (widget.scrap.isPhoto) ...{
           if (SaveImageToDiskCommand.canUse) ...{
@@ -61,7 +61,7 @@ class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuSta
                 ContextMenuButtonConfig("Save Image As...",
                     icon: const ContextMenuIcon(icon: AppIcons.image),
                     iconHover: const ContextMenuIconHovered(icon: AppIcons.image),
-                    onPressed: () => handlePressed(context, _handleSaveImagePressed))),
+                    onPressed: () => handlePressed(context, handleSaveImagePressed))),
             const ContextDivider(),
           },
           buttonBuilder(
@@ -71,7 +71,7 @@ class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuSta
                   // Use custom color for icon if this is the selected photo
                   icon: ContextMenuIcon(icon: AppIcons.star, color: isCoverPhoto ? theme.accent1 : null),
                   iconHover: const ContextMenuIconHovered(icon: AppIcons.star),
-                  onPressed: disableCoverPhotoBtn ? null : () => handlePressed(context, _handleCoverPhotoPressed))),
+                  onPressed: disableCoverPhotoBtn ? null : () => handlePressed(context, handleCoverPhotoPressed))),
           const ContextDivider(),
         },
         buttonBuilder(
@@ -79,7 +79,7 @@ class _ScrapContextMenuState extends State<ScrapContextMenu> with ContextMenuSta
             ContextMenuButtonConfig("Delete",
                 icon: const ContextMenuIcon(icon: AppIcons.trashcan),
                 iconHover: const ContextMenuIconHovered(icon: AppIcons.trashcan),
-                onPressed: () => handlePressed(context, _handleDeletePressed)),
+                onPressed: () => handlePressed(context, handleDeletePressed)),
             // Custom hover color for delete button
             context.contextMenuOverlay.buttonStyle.copyWith(hoverBgColor: theme.greyStrong)),
       ],

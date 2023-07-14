@@ -18,7 +18,7 @@ class ContentPickerTabMenu extends StatefulWidget {
   final String? pageId;
 
   @override
-  _ContentPickerTabMenuState createState() => _ContentPickerTabMenuState();
+  State<ContentPickerTabMenu> createState() => _ContentPickerTabMenuState();
 }
 
 class _ContentPickerTabMenuState extends State<ContentPickerTabMenu> {
@@ -51,13 +51,13 @@ class _ContentPickerTabMenuState extends State<ContentPickerTabMenu> {
                     ContentPickerScrapsPanel(
                       bookId: widget.bookId,
                       pageId: widget.pageId,
-                      isVisible: _currentMenuType == ContentType.Photo,
+                      isVisible: _currentMenuType == ContentType.photo,
                     ),
                     //if (_currentMenuType == ContentType.Text) ContentPickerTextsPanel(),
                     ContentPickerEmojiPanel(
                       bookId: widget.bookId,
                       pageId: widget.pageId,
-                      isVisible: _currentMenuType == ContentType.Emoji,
+                      isVisible: _currentMenuType == ContentType.emoji,
                     ),
                   ]),
                   HSpace.lg,
@@ -80,7 +80,7 @@ class _ContentPickerTabMenuState extends State<ContentPickerTabMenu> {
       selectedContentTab = null;
     }
     // Text btn has no associated picker, just de-select the current btn and add a new Text element.
-    if (selectedContentTab == ContentType.Text) {
+    if (selectedContentTab == ContentType.text) {
       _addTextScrap();
       selectedContentTab = null;
     }
@@ -97,7 +97,7 @@ class _ContentPickerTabMenuState extends State<ContentPickerTabMenu> {
     CreatePlacedScrapCommand().run(pageId: widget.pageId!, scraps: [
       ScrapItem(
         bookId: widget.bookId,
-        contentType: ContentType.Text,
+        contentType: ContentType.text,
         data: "Type something",
         aspect: 3,
       )
@@ -138,22 +138,22 @@ class __ContentPickerTabMenuState extends State<_ContentPickerTabMenu> {
             _TabMenuBtn(
               icon: AppIcons.scraps,
               tooltip: "Add photos",
-              isSelected: widget.contentType == ContentType.Photo,
-              onPressed: () => _handlePressed(ContentType.Photo),
+              isSelected: widget.contentType == ContentType.photo,
+              onPressed: () => _handlePressed(ContentType.photo),
             ),
             VSpace.med,
             _TabMenuBtn(
               icon: AppIcons.text,
               tooltip: "Create new textfield",
-              isSelected: widget.contentType == ContentType.Text,
-              onPressed: widget.isPageSelected ? () => _handlePressed(ContentType.Text) : null,
+              isSelected: widget.contentType == ContentType.text,
+              onPressed: widget.isPageSelected ? () => _handlePressed(ContentType.text) : null,
             ),
             VSpace.med,
             _TabMenuBtn(
               icon: AppIcons.emoji,
               tooltip: "Add emoji",
-              isSelected: widget.contentType == ContentType.Emoji,
-              onPressed: widget.isPageSelected ? () => _handlePressed(ContentType.Emoji) : null,
+              isSelected: widget.contentType == ContentType.emoji,
+              onPressed: widget.isPageSelected ? () => _handlePressed(ContentType.emoji) : null,
             ),
           ]),
         ),

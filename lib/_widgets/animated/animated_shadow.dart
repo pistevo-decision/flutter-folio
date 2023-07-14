@@ -13,7 +13,8 @@ class AnimatedShadow extends StatelessWidget {
     required this.end,
     this.curve,
   }) : super(key: key) {
-    assert(blurs.length == colors.length, "blurs.length and colors.length must match");
+    assert(blurs.length == colors.length,
+        "blurs.length and colors.length must match");
   }
 
   final Widget child;
@@ -29,7 +30,7 @@ class AnimatedShadow extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: begin ?? end, end: end),
       curve: curve ?? Curves.easeOut,
-      builder: (_, double value, _child) {
+      builder: (_, double value, child) {
         return Container(
           decoration: BoxDecoration(boxShadow: [
             ...blurs.map((b) {
@@ -37,15 +38,16 @@ class AnimatedShadow extends StatelessWidget {
               // Like a real shadow, it blurs more when raised, but the strength actually goes down
               return BoxShadow(
                 blurRadius: max(0, b * value),
-                color: c.withOpacity(value < .1 ? 0 : max(0, 1 - (value * (1 - c.opacity)))),
+                color: c.withOpacity(
+                    value < .1 ? 0 : max(0, 1 - (value * (1 - c.opacity)))),
               );
             })
           ]),
-          child: _child,
+          child: child,
         );
       },
-      child: child,
       duration: duration,
+      child: child,
     );
   }
 }

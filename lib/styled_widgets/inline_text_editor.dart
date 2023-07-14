@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_folio/_utils/string_utils.dart';
 import 'package:flutter_folio/core_packages.dart';
 
-//TODO: This is a good package / code example / blogpost
+// This is a good package / code example / blogpost
 class InlineTextEditor extends StatefulWidget {
   const InlineTextEditor(this.text,
       {Key? key,
@@ -38,7 +38,7 @@ class InlineTextEditor extends StatefulWidget {
   final bool enableContextMenu;
 
   @override
-  _InlineTextEditorState createState() => _InlineTextEditorState();
+  State<InlineTextEditor> createState() => _InlineTextEditorState();
 }
 
 class _InlineTextEditorState extends State<InlineTextEditor> {
@@ -80,7 +80,7 @@ class _InlineTextEditorState extends State<InlineTextEditor> {
     double extraWidth = _isEditing ? 3 : 0;
     double extraHeight = _isEditing ? 12 : 0;
     bool usePromptText = StringUtils.isEmpty(_textController.text);
-    //print(_textController.text);
+    //log(_textController.text);
     return Container(
       width: widget.width + extraWidth,
       height: textSize.height + extraHeight,

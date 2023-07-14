@@ -24,8 +24,8 @@ class StyledScrollbar extends StatelessWidget {
             controller: controller,
             radius: Corners.smRadius,
             thickness: touchMode ? 6 : 10,
-            showTrackOnHover: false,
-            isAlwaysShown: touchMode == false,
+            trackVisibility: false,
+            thumbVisibility: touchMode == false,
             child: paddedChild,
           )
         : paddedChild;

@@ -20,7 +20,7 @@ class WebFileWriter implements UniversalFile {
   Future<String?> read() async {
     await initPrefs();
     String? value = prefs?.getString(fileName);
-    //print("Reading pref: $fileName = $value");
+    //log("Reading pref: $fileName = $value");
     return value;
   }
 
@@ -31,7 +31,7 @@ class WebFileWriter implements UniversalFile {
       _lastWrite = await read() ?? "";
       value = _lastWrite + value;
     }
-    //print("Write: $fileName = $value");
+    //log("Write: $fileName = $value");
     _lastWrite = value;
     await prefs?.setString(fileName, value);
   }

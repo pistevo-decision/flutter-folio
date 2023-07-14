@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_folio/_utils/device_info.dart';
 import 'package:flutter_folio/_utils/easy_notifier.dart';
@@ -21,7 +22,7 @@ class AppModel extends AbstractModel {
   // Determines what the start value should be for touchMode, bases on the current device os
   static bool defaultToTouchMode() => DeviceOS.isMobile;
 
-  static AppTheme get _defaultTheme => AppTheme.fromType(ThemeType.Orange_Light);
+  static AppTheme get _defaultTheme => AppTheme.fromType(ThemeType.orangeLight);
 
   AppModel(this._booksModel, this._firebase) {
     //_booksModel.addListener(notify);
@@ -99,7 +100,8 @@ class AppModel extends AbstractModel {
   void scheduleSave() => _saveDebouncer.run(save);
 
   Future<void> save() async {
-    print("Saving: $kFileName");
+    log("Saving: $kFileName");
+
     String saveJson = jsonEncode(toJson());
     await UniversalFile(kFileName).write(saveJson);
   }
@@ -109,12 +111,12 @@ class AppModel extends AbstractModel {
     if (saveJson != null) {
       try {
         fromJson(jsonDecode(saveJson) as Map<String, dynamic>);
-        print("Save file loaded, $windowSize");
+        log("Save file loaded, $windowSize");
       } catch (e) {
-        print("Failed to decode save file json: $e");
+        log("Failed to decode save file json: $e");
       }
     } else {
-      print("No save file found.");
+      log("No save file found.");
     }
   }
 
@@ -127,7 +129,7 @@ class AppModel extends AbstractModel {
       json["winWidth"] as double? ?? 0.0,
       json["winHeight"] as double? ?? 0.0,
     );
-    //print(json);
+    //log(json);
   }
 
   Map<String, dynamic> toJson() {

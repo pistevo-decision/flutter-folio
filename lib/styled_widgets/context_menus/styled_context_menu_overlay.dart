@@ -12,7 +12,7 @@ class StyledContextMenuOverlay extends StatelessWidget {
     AppTheme theme = context.watch();
     return ContextMenuOverlay(
       dividerBuilder: (_) => const ContextDivider(),
-      cardBuilder: (_, children) => ContextMenuCard(children: children, padding: EdgeInsets.zero),
+      cardBuilder: (_, children) => ContextMenuCard(padding: EdgeInsets.zero, children: children),
       buttonStyle: ContextMenuButtonStyle(
         textStyle: TextStyles.body2,
         shortcutTextStyle: TextStyles.body2.copyWith(color: theme.grey),

@@ -26,13 +26,13 @@ class PaddedRow extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> c = children.toList();
     Widget row = Row(
-      children: c,
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
       textBaseline: textBaseline,
       textDirection: textDirection,
       verticalDirection: verticalDirection,
+      children: c,
     );
     return Padding(padding: padding, child: row);
   }
@@ -62,13 +62,13 @@ class PaddedColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> c = children.toList();
     Widget col = Column(
-      children: c,
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisSize: mainAxisSize,
       textBaseline: textBaseline,
       textDirection: textDirection,
       verticalDirection: verticalDirection,
+      children: c,
     );
     return Padding(padding: padding, child: col);
   }

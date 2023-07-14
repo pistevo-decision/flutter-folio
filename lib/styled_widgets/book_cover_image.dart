@@ -10,7 +10,7 @@ class BookCoverImage extends StatefulWidget {
   final ScrapBookData data;
 
   @override
-  _BookCoverImageState createState() => _BookCoverImageState();
+  State<BookCoverImage> createState() => _BookCoverImageState();
 }
 
 class _BookCoverImageState extends State<BookCoverImage> {
@@ -18,7 +18,7 @@ class _BookCoverImageState extends State<BookCoverImage> {
   Widget build(BuildContext context) {
     bool usePlaceholder = StringUtils.isEmpty(widget.data.imageUrl);
     if (!usePlaceholder) {
-      //print(widget.data.imageUrl);
+      //log(widget.data.imageUrl);
       return HostedImage(widget.data.imageUrl, fit: BoxFit.cover);
     } else {
       return Image.asset("assets/images/empty-background.png", fit: BoxFit.cover);

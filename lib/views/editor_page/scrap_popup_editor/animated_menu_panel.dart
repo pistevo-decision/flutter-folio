@@ -23,7 +23,7 @@ class AnimatedMenuPanel extends StatefulWidget {
   final Widget Function(bool isOpen) childBuilder;
 
   @override
-  _AnimatedMenuPanelState createState() => _AnimatedMenuPanelState();
+  State<AnimatedMenuPanel> createState() => _AnimatedMenuPanelState();
 }
 
 class _AnimatedMenuPanelState extends State<AnimatedMenuPanel> {

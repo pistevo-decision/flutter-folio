@@ -32,7 +32,7 @@ class BootstrapCommand extends commands.BaseAppCommand {
       await Future<void>.delayed(const Duration(seconds: 1));
       // See if we don't have auth now...
       if (firebase.isSignedIn == false) {
-        //Still no auth, clear the stale user data. // TODO: Can we try some sort of re-auth here instead of just bailing
+        //Still no auth, clear the stale user data.
         appModel.currentUser = null;
       }
     }
@@ -59,7 +59,7 @@ class BootstrapCommand extends commands.BaseAppCommand {
     if (kIsWeb == false) {
       int remaining = kMinBootstrapTimeMs - (TimeUtils.nowMillis - startTime);
       if (remaining > 0) {
-        print("BootstrapCommand - waiting for $remaining ms");
+        log("BootstrapCommand - waiting for $remaining ms");
         await Future<void>.delayed(Duration(milliseconds: remaining));
       }
     }
@@ -79,7 +79,7 @@ class BootstrapCommand extends commands.BaseAppCommand {
         log(e.toString());
       }
     }
-    imageCache?.maximumSizeBytes = cacheSize;
+    imageCache.maximumSizeBytes = cacheSize;
   }
 
   void _configureDesktop() {

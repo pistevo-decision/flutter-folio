@@ -18,12 +18,12 @@ class NativeFirebaseService extends FirebaseService {
   @override
   Future<void> init() async {
     await Firebase.initializeApp().catchError((Object e) {
-      print("$e");
+      throw e;
     });
     if (kIsWeb) {
       await auth.setPersistence(Persistence.LOCAL);
     }
-    print("InitComplete");
+    log("InitComplete");
     FirebaseAuth.instance.userChanges().listen((User? user) {
       _isSignedIn = user != null;
     });
@@ -111,14 +111,14 @@ class NativeFirebaseService extends FirebaseService {
         // return (d.data() ?? {})..['documentId'] = d.id;
       }
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return null;
   }
 
   @override
   Future<List<Map<String, dynamic>>?> getCollection(List<String> keys) async {
-    //print("getDocStream: ${keys.toString()}");
+    //log("getDocStream: ${keys.toString()}");
     QuerySnapshot? snapshot = (await _getCollection(keys)?.get());
     if (snapshot != null) {
       for (final d in snapshot.docs) {

@@ -1,3 +1,4 @@
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_folio/_utils/device_info.dart';
@@ -34,7 +35,7 @@ class FirebaseFactory {
       _initComplete = true;
       service.init();
     }
-    print("firestore-${useNative ? "NATIVE" : "DART"} Initialized");
+    log("firestore-${useNative ? "NATIVE" : "DART"} Initialized");
     return service;
   }
 }
@@ -224,7 +225,7 @@ abstract class FirebaseService {
       Map<String, dynamic>? data = await getDoc([]);
       return data == null ? null : AppUser.fromJson(data);
     } catch (e) {
-      print(e);
+      log(e.toString());
       return null;
     }
   }
@@ -263,7 +264,7 @@ abstract class FirebaseService {
 
 bool checkKeysForNull(List<String> keys) {
   if (keys.contains(null)) {
-    print("ERROR: invalid key was passed to firestore: $keys");
+    log("ERROR: invalid key was passed to firestore: $keys");
     return false;
   }
   return true;

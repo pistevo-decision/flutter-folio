@@ -14,7 +14,7 @@ class CollapsiblePagesPanel extends StatefulWidget {
   final double height;
 
   @override
-  _CollapsiblePagesPanelState createState() => _CollapsiblePagesPanelState();
+  State<CollapsiblePagesPanel> createState() => _CollapsiblePagesPanelState();
 }
 
 class _CollapsiblePagesPanelState extends State<CollapsiblePagesPanel> {
@@ -63,7 +63,7 @@ class _RoundedBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppTheme theme = context.watch();
-    //TODO: Can this be served by an existing btn preset? If not, consider creating one?
+    // Can this be served by an existing btn preset? If not, consider creating one?
     return SimpleBtn(
         onPressed: onPressed,
         ignoreDensity: false,

@@ -24,7 +24,7 @@ class NetworkedScrapboard extends StatefulWidget {
   final bool readOnly;
 
   @override
-  _NetworkedScrapboardState createState() => _NetworkedScrapboardState();
+  State<NetworkedScrapboard> createState() => _NetworkedScrapboardState();
 
   final void Function(List<ScrapData<PlacedScrapItem>> boxes)? onSelectionChanged;
 }
@@ -43,7 +43,7 @@ class _NetworkedScrapboardState extends State<NetworkedScrapboard> {
     List<PlacedScrapItem>? scrapsList = books.currentPageScraps;
     scrapsList = List.from(scrapsList ?? []);
     // Strip hidden items from the list, they are non visual.
-    scrapsList.removeWhere((s) => s.contentType == ContentType.Hidden);
+    scrapsList.removeWhere((s) => s.contentType == ContentType.hidden);
     // Apply sorting to remaining items
     scrapsList = DataUtils.sortListById((scrapsList), _currentPage?.boxOrder ?? []);
     // Create ScrapBoxData from our PlacedScraps, that the Scrapboard can work with.
@@ -81,8 +81,8 @@ class _NetworkedScrapboardState extends State<NetworkedScrapboard> {
                 });
           },
           itemBuilder: (item) {
-            int _selectedIndex = _selectedBoxes.indexWhere((b) => b.data.documentId == item.documentId);
-            bool isSelected = _selectedIndex != -1;
+            int selectedIndex = _selectedBoxes.indexWhere((b) => b.data.documentId == item.documentId);
+            bool isSelected = selectedIndex != -1;
             return PlacedScrapRenderer(
               item,
               isSelected: isSelected,
@@ -90,7 +90,7 @@ class _NetworkedScrapboardState extends State<NetworkedScrapboard> {
               onEditEnded: _handleScrapEditEnded,
             );
           },
-          lockAspectForItem: (item) => item.data.contentType == ContentType.Emoji,
+          lockAspectForItem: (item) => item.data.contentType == ContentType.emoji,
           startOffset: widget.startOffset,
           // Convert PlacedScrapItem's to a BoxData that is expected by the Scrapboard
         ),

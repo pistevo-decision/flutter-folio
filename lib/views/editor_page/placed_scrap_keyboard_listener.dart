@@ -18,7 +18,7 @@ class PlacedScrapKeyboardListener extends StatefulWidget {
   final PlacedScrapItem item;
 
   @override
-  _PlacedScrapKeyboardListenerState createState() => _PlacedScrapKeyboardListenerState();
+  State<PlacedScrapKeyboardListener> createState() => _PlacedScrapKeyboardListenerState();
 }
 
 class _PlacedScrapKeyboardListenerState extends State<PlacedScrapKeyboardListener> with RawKeyboardListenerMixin {

@@ -6,7 +6,7 @@ class MacosTitleBar extends StatefulWidget {
   final Widget child;
 
   @override
-  _MacosTitleBarState createState() => _MacosTitleBarState();
+  State<MacosTitleBar> createState() => _MacosTitleBarState();
 }
 
 class _MacosTitleBarState extends State<MacosTitleBar> {

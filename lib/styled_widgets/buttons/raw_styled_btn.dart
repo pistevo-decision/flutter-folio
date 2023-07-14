@@ -12,7 +12,7 @@ class BtnColors {
   final Color? outline;
 }
 
-enum BtnTheme { Primary, Secondary, Raw }
+enum BtnTheme { primary, secondary, raw }
 
 // A core btn that takes a child and wraps it in a btn that has a FocusNode.
 // Colors are required. By default there is no padding.
@@ -43,7 +43,7 @@ class RawBtn extends StatefulWidget {
   final bool ignoreDensity;
 
   @override
-  _RawBtnState createState() => _RawBtnState();
+  State<RawBtn> createState() => _RawBtnState();
 }
 
 class _RawBtnState extends State<RawBtn> {

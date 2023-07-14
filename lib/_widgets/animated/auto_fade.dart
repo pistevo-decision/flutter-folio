@@ -16,16 +16,18 @@ class AutoFade extends StatefulWidget {
     this.curve = Curves.easeOut,
   }) : super(key: key);
   @override
-  _AutoFadeState createState() => _AutoFadeState();
+  State<AutoFade> createState() => _AutoFadeState();
 }
 
-class _AutoFadeState extends State<AutoFade> with SingleTickerProviderStateMixin {
+class _AutoFadeState extends State<AutoFade>
+    with SingleTickerProviderStateMixin {
   late AnimationController animController;
   late Animation<double> anim;
 
   @override
   void initState() {
-    animController = AnimationController(vsync: this, duration: widget.duration);
+    animController =
+        AnimationController(vsync: this, duration: widget.duration);
     animController.addListener(() => setState(() {}));
     anim = animController.drive(CurveTween(curve: widget.curve));
     Future.delayed(widget.delay, () {
@@ -43,7 +45,8 @@ class _AutoFadeState extends State<AutoFade> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     Offset startPos = widget.offset;
-    Animation<Offset> position = Tween<Offset>(begin: startPos, end: Offset.zero).animate(anim);
+    Animation<Offset> position =
+        Tween<Offset>(begin: startPos, end: Offset.zero).animate(anim);
     return Transform.translate(
       offset: position.value,
       child: Opacity(opacity: anim.value, child: widget.child),

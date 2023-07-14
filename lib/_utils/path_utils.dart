@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:xdg_directories/xdg_directories.dart' as xdg_directories;
 
@@ -12,7 +13,7 @@ class PathUtil {
       try {
         return (await getApplicationSupportDirectory()).path;
       } catch (e) {
-        print("$e");
+        log("$e");
       }
     }
     return result;

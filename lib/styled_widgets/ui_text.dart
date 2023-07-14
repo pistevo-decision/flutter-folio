@@ -8,7 +8,7 @@ class UiText extends StatefulWidget {
   final TextStyle? style;
 
   @override
-  _UiTextState createState() => _UiTextState();
+  State<UiText> createState() => _UiTextState();
 }
 
 class _UiTextState extends State<UiText> {
@@ -16,9 +16,11 @@ class _UiTextState extends State<UiText> {
   @override
   Widget build(BuildContext context) {
     if (widget.span != null) {
-      return SelectableText.rich(widget.span!, style: widget.style, focusNode: _focusNode);
+      return SelectableText.rich(widget.span!,
+          style: widget.style, focusNode: _focusNode);
     } else {
-      return SelectableText(widget.text ?? "", style: widget.style, focusNode: _focusNode);
+      return SelectableText(widget.text ?? "",
+          style: widget.style, focusNode: _focusNode);
     }
   }
 }

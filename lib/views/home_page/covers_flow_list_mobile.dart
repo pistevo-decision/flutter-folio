@@ -10,7 +10,7 @@ class CoversFlowListMobile extends StatefulWidget {
   final List<ScrapBookData> books;
 
   @override
-  _CoversFlowListMobileState createState() => _CoversFlowListMobileState();
+  State<CoversFlowListMobile> createState() => _CoversFlowListMobileState();
 }
 
 class _CoversFlowListMobileState extends State<CoversFlowListMobile> {

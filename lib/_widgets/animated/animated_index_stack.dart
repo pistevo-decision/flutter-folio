@@ -13,10 +13,11 @@ class AnimatedIndexStack extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimatedIndexStackState createState() => _AnimatedIndexStackState();
+  State<AnimatedIndexStack> createState() => _AnimatedIndexStackState();
 }
 
-class _AnimatedIndexStackState extends State<AnimatedIndexStack> with SingleTickerProviderStateMixin {
+class _AnimatedIndexStackState extends State<AnimatedIndexStack>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

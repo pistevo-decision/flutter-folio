@@ -35,7 +35,10 @@ class LinuxMinimizeIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(_linuxMinimizeIconSvg, color: color);
+    return SvgPicture.string(
+      _linuxMinimizeIconSvg,
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+    );
   }
 }
 
@@ -46,7 +49,8 @@ class LinuxMaximizeIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(_linuxMaximizeIconSvg, color: color);
+    return SvgPicture.string(_linuxMaximizeIconSvg,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   }
 }
 
@@ -57,7 +61,8 @@ class LinuxUnmaximizeIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(_linuxUnmaximizeIconSvg, color: color);
+    return SvgPicture.string(_linuxUnmaximizeIconSvg,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   }
 }
 
@@ -68,6 +73,7 @@ class LinuxCloseIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(_linuxCloseIconSvg, color: color);
+    return SvgPicture.string(_linuxCloseIconSvg,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   }
 }

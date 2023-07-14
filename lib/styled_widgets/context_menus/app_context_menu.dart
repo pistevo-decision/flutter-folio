@@ -11,7 +11,7 @@ class AppContextMenu extends StatefulWidget {
   const AppContextMenu({Key? key}) : super(key: key);
 
   @override
-  _AppContextMenuState createState() => _AppContextMenuState();
+  State<AppContextMenu> createState() => _AppContextMenuState();
 }
 
 class _AppContextMenuState extends State<AppContextMenu> with ContextMenuStateMixin {

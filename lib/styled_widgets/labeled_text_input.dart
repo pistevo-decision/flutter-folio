@@ -36,7 +36,7 @@ class LabeledTextInput extends StatefulWidget {
   final bool autoFocus;
 
   @override
-  _LabeledTextInputState createState() => _LabeledTextInputState();
+  State<LabeledTextInput> createState() => _LabeledTextInputState();
 }
 
 class _LabeledTextInputState extends State<LabeledTextInput> {

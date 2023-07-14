@@ -52,6 +52,10 @@ dependencies:
   firebase_auth: ^4.6.3
   cloud_firestore: ^4.8.2
   universal_platform: ^1.0.0+1
+  xdg_directories: ^1.0.1
+  path: ^1.8.3
+  freezed_annotation: ^2.4.1
+  vector_math: ^2.1.4
 
 dev_dependencies:
   # sample build cmd
@@ -64,7 +68,6 @@ dev_dependencies:
   build_runner:
   flutter_lints: ^2.0.2
   freezed: ^2.4.1
-  freezed_annotation: ^2.4.1
   json_serializable:
   flutter_launcher_icons: ^0.13.1
   msix: ^3.15.0

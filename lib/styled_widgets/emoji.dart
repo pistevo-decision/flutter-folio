@@ -7,26 +7,26 @@ enum Emojis {
   checkmark,
   confetti,
   cool,
-  crying_face,
-  dizzy_face,
-  exclamation_question,
+  cryingFace,
+  dizzyFace,
+  exclamationQuestion,
   fire,
-  folded_hands,
-  heart_eyes,
-  hundred_points,
-  kissing_face,
-  location_pin,
-  musical_notes,
-  palms_up,
-  pile_of_poo,
-  red_heart,
-  shooting_star,
-  smiling_eyes,
+  foldeHands,
+  heartEyes,
+  hundredPoints,
+  kissingFace,
+  locationPin,
+  musicalNotes,
+  palmsUp,
+  pileOfPoo,
+  redHJeart,
+  shootingStar,
+  smilingEyes,
   sparkles,
-  squinting_face,
-  sunglasses_face,
-  tears_of_joy_face,
-  warning_sign,
+  squintingFace,
+  sunglassesFace,
+  tearsOfJoyFace,
+  warningSign,
 }
 
 class Emoji extends StatelessWidget {
@@ -38,7 +38,7 @@ class Emoji extends StatelessWidget {
   Widget build(BuildContext context) {
     if (emoji == null) return Container();
     String fileName = describeEnum(emoji!).toLowerCase().replaceAll("_", "-");
-    String path = 'assets/images/emoji/' + fileName + '.svg';
+    String path = 'assets/images/emoji/$fileName.svg';
     return SvgPicture.asset(path, width: size, height: size);
   }
 }

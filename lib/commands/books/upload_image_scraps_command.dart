@@ -20,14 +20,14 @@ class UploadImageScrapsCommand extends BaseAppCommand {
         .map((e) => ScrapItem(
               documentId: const Uuid().v1(),
               bookId: bookId,
-              contentType: ContentType.Photo,
+              contentType: ContentType.photo,
               creationTime: TimeUtils.nowMillis,
             ))
         .toList();
     // Inject local scraps for loading spinners
     booksModel.currentBookScraps = List.from(booksModel.currentBookScraps ?? [])..addAll(newScraps);
 
-    // Send all scraps to the database, //TODO: Why do we send these if we already made local copies? Can't we just wait?
+    // Send all scraps to the database, Why do we send these if we already made local copies? Can't we just wait?
     await Future.wait(newScraps.map((s) => firebase.addBookScrap(s)).toList());
 
     // Upload images and get a public Url

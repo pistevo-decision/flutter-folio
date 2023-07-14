@@ -13,7 +13,7 @@ class TouchModeToggleBtn extends StatefulWidget {
   const TouchModeToggleBtn({Key? key, required this.invertPopupAlign}) : super(key: key);
   final bool invertPopupAlign;
   @override
-  _TouchModeToggleBtnState createState() => _TouchModeToggleBtnState();
+  State<TouchModeToggleBtn> createState() => _TouchModeToggleBtnState();
 }
 
 class _TouchModeToggleBtnState extends State<TouchModeToggleBtn> {

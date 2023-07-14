@@ -10,14 +10,14 @@ class StyledPageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppTheme theme = context.watch();
-    //TODO: Add a FocusTraversalGroup() when this bug is addressed:https://github.com/flutter/flutter/issues/74656
+    // Add a FocusTraversalGroup() when this bug is addressed:https://github.com/flutter/flutter/issues/74656
     return GestureDetector(
       onTap: InputUtils.unFocus,
       child: Scaffold(
         backgroundColor: theme.bg1,
         body: Stack(
           children: [
-            ContextMenuRegion(child: Container(), contextMenu: const AppContextMenu()),
+            ContextMenuRegion(contextMenu: const AppContextMenu(), child: Container()),
             body,
           ],
         ),

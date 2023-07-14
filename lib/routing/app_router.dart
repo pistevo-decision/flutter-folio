@@ -87,7 +87,7 @@ class AppRouterDelegate extends RouterDelegate<AppLink> with ChangeNotifier {
     );
   }
 
-  //TODO: Fix NoAnimationsPage, SB: NoAnimationPage was rebuilding constantly when resizing the app window, not sure why.
+  //Fix NoAnimationsPage, SB: NoAnimationPage was rebuilding constantly when resizing the app window, not sure why.
   Page _wrapContentInPage(Widget e) {
     //On mobile, use the Material/Cupertino transitions
     // if (DeviceInfo.isMobile) {

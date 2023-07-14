@@ -39,18 +39,18 @@
 //           onDataFromJson: (dynamic json) => AppUser.fromJson(json as Map<String, dynamic>),
 //           onDataToJson: (AppUser data) => data.toJson(),
 //           onPatchData: (AppUser data, updatedFields) {
-//             print(updatedFields);
+//             log(updatedFields);
 //             return data;
 //           });
 //       _acct = account;
 //       // Listen to root store
-//       _rootStoreStream = (await _rootStore!.streamAll()).listen((e) => print('Stream update: $e'));
-//       print('All data: ${await _rootStore!.all()}');
+//       _rootStoreStream = (await _rootStore!.streamAll()).listen((e) => log('Stream update: $e'));
+//       log('All data: ${await _rootStore!.all()}');
 //     } on Exception catch (e) {
 //       if (e is AuthException) {
 //         if (e.error.message == "EMAIL_NOT_FOUND") _errorMsg = "Email not found.";
 //         if (e.error.message == "INVALID_PASSWORD") _errorMsg = "Password is incorrect.";
-//         print(e.error.message);
+//         log(e.error.message);
 //       }
 //     }
 //     setState(() {});

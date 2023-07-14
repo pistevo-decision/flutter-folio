@@ -14,7 +14,7 @@ class ContentPickerEmojiPanel extends StatefulWidget {
   final String bookId;
 
   @override
-  _ContentPickerEmojiPanelState createState() => _ContentPickerEmojiPanelState();
+  State<ContentPickerEmojiPanel> createState() => _ContentPickerEmojiPanelState();
 }
 
 class _ContentPickerEmojiPanelState extends State<ContentPickerEmojiPanel> {
@@ -23,26 +23,26 @@ class _ContentPickerEmojiPanelState extends State<ContentPickerEmojiPanel> {
     Emojis.checkmark,
     Emojis.confetti,
     Emojis.cool,
-    Emojis.crying_face,
-    Emojis.dizzy_face,
-    Emojis.exclamation_question,
+    Emojis.cryingFace,
+    Emojis.dizzyFace,
+    Emojis.exclamationQuestion,
     Emojis.fire,
-    Emojis.folded_hands,
-    Emojis.heart_eyes,
-    Emojis.hundred_points,
-    Emojis.kissing_face,
-    Emojis.location_pin,
-    Emojis.musical_notes,
-    Emojis.palms_up,
-    Emojis.pile_of_poo,
-    Emojis.red_heart,
-    Emojis.shooting_star,
-    Emojis.smiling_eyes,
+    Emojis.foldeHands,
+    Emojis.heartEyes,
+    Emojis.hundredPoints,
+    Emojis.kissingFace,
+    Emojis.locationPin,
+    Emojis.musicalNotes,
+    Emojis.palmsUp,
+    Emojis.pileOfPoo,
+    Emojis.redHJeart,
+    Emojis.shootingStar,
+    Emojis.smilingEyes,
     Emojis.sparkles,
-    Emojis.squinting_face,
-    Emojis.sunglasses_face,
-    Emojis.tears_of_joy_face,
-    Emojis.warning_sign,
+    Emojis.squintingFace,
+    Emojis.sunglassesFace,
+    Emojis.tearsOfJoyFace,
+    Emojis.warningSign,
   ];
 
   @override
@@ -85,7 +85,7 @@ class _ContentPickerEmojiPanelState extends State<ContentPickerEmojiPanel> {
         ScrapItem(
           bookId: widget.bookId,
           aspect: 1,
-          contentType: ContentType.Emoji,
+          contentType: ContentType.emoji,
           data: EnumToString.convertToString(emoji),
         )
       ]);

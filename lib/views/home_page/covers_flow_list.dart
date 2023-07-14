@@ -16,7 +16,7 @@ class CoversFlowList extends StatefulWidget {
   final List<ScrapBookData> books;
 
   @override
-  _CoversFlowListState createState() => _CoversFlowListState();
+  State<CoversFlowList> createState() => _CoversFlowListState();
 }
 
 class _CoversFlowListState extends State<CoversFlowList> {
@@ -99,8 +99,8 @@ class _CoversFlowListState extends State<CoversFlowList> {
                       topLeftOffset: _currentCardPos!,
                       closedSize: cardSize,
                       duration: Times.slow,
-                      child: BookCoverWidget(_fgBook!, largeMode: true),
                       onEnd: _handleCardOpened,
+                      child: BookCoverWidget(_fgBook!, largeMode: true),
                     ),
                   ]
                 ],
@@ -172,7 +172,7 @@ class _CoversFlowListState extends State<CoversFlowList> {
     if (_isOpening) return;
     // Convert the globalPos we get from the clickedItem, into a localState for this Widget
     Offset localPos = ContextUtils.globalToLocal(context, globalPos);
-    //print(localPos);
+    //log(localPos);
     setState(() {
       // The _bgBook may be stale since the _fgBook was changed, update it before we start a new transition.
       // We didn't want to update it while the user was editing text, but we need to now as the _fgBook is switching to a new object.

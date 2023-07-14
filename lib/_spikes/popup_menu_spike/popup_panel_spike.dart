@@ -10,13 +10,13 @@ class PopupPanelSpike extends StatefulWidget {
   const PopupPanelSpike({Key? key}) : super(key: key);
 
   @override
-  _PopupPanelSpikeState createState() => _PopupPanelSpikeState();
+  State<PopupPanelSpike> createState() => _PopupPanelSpikeState();
 }
 
 class _PopupPanelSpikeState extends State<PopupPanelSpike> {
   PlacedScrapItem _item = PlacedScrapItem(
     rot: 30,
-    boxStyle: BoxStyle(font: BoxFonts.Caveat, align: TextAlign.center, fgColor: Colors.red, bgColor: Colors.blue),
+    boxStyle: BoxStyle(font: BoxFonts.caveat, align: TextAlign.center, fgColor: Colors.red, bgColor: Colors.blue),
     scale: 1,
     lastModifiedTime: 0,
     dy: 0,

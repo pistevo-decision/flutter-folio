@@ -11,9 +11,9 @@ class ScrapTextEditorDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _handleSubmit(String value) => Navigator.pop(context);
+    void handleSubmit(String value) => Navigator.pop(context);
 
-    void _handleTextChanged(String value) {
+    void handleTextChanged(String value) {
       UpdatePageScrapCommand().run(item.copyWith(data: value));
     }
 
@@ -26,8 +26,8 @@ class ScrapTextEditorDialog extends StatelessWidget {
             child: LabeledTextInput(
               label: "Edit Text",
               text: item.data,
-              onChanged: _handleTextChanged,
-              onSubmit: _handleSubmit,
+              onChanged: handleTextChanged,
+              onSubmit: handleSubmit,
             ),
           ),
         ],

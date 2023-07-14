@@ -44,7 +44,7 @@ class CollapsingCard extends StatefulWidget {
   final Widget? icon;
 
   @override
-  _CollapsingCardState createState() => _CollapsingCardState();
+  State<CollapsingCard> createState() => _CollapsingCardState();
 }
 
 class _CollapsingCardState extends State<CollapsingCard> with TickerProviderStateMixin {

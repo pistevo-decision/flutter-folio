@@ -12,7 +12,7 @@ class BookContextMenu extends StatefulWidget {
   final ScrapBookData book;
 
   @override
-  _BookContextMenuState createState() => _BookContextMenuState();
+  State<BookContextMenu> createState() => _BookContextMenuState();
 }
 
 class _BookContextMenuState extends State<BookContextMenu> with ContextMenuStateMixin {

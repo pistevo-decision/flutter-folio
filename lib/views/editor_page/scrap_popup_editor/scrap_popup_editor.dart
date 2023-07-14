@@ -14,7 +14,7 @@ import 'scrap_popup_panel_color.dart';
 import 'scrap_popup_panel_fonts.dart';
 
 /// A floating menu that contains multiple sub-panels. Some of these panels have open and closed states, others just contain some controls.
-// TODO: Currently this widget used fixed sizing because it was quicker to build.
+//  Currently this widget used fixed sizing because it was quicker to build.
 //    We should try to remove this. The solution could involve a stack + a floating AnimatedPanel that can open-close
 
 class ScrapPopupEditor extends StatefulWidget {
@@ -31,7 +31,7 @@ class ScrapPopupEditor extends StatefulWidget {
   static const double kWidth = 300;
 
   @override
-  _ScrapPopupEditorState createState() => _ScrapPopupEditorState();
+  State<ScrapPopupEditor> createState() => _ScrapPopupEditorState();
 }
 
 class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
@@ -47,7 +47,7 @@ class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
     double row1Height = isTouchMode ? 70 : 60;
     double row2Height = isTouchMode ? 50 : 40;
     double row3Height = isTouchMode ? 40 : 25;
-    bool isImage = widget.scrap.contentType == ContentType.Emoji || widget.scrap.contentType == ContentType.Photo;
+    bool isImage = widget.scrap.contentType == ContentType.emoji || widget.scrap.contentType == ContentType.photo;
     if (isImage) {
       row1Height = 0;
       row2Height = 0;
@@ -100,11 +100,11 @@ class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
                       index: 0,
                       openHeight: 100,
                       childBuilder: (bool isOpen) => _MenuItem(
+                          isOpen: isOpen,
                           child: ScrapPopupPanelAlignment(
                             onAlignmentPressed: _handleAlignChanged,
                             value: scrapStyle.align,
-                          ),
-                          isOpen: isOpen),
+                          )),
                     ),
 
                     /// Font Family
@@ -114,12 +114,12 @@ class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
                       index: 1,
                       openHeight: 140,
                       childBuilder: (bool isOpen) => _MenuItem(
+                        isOpen: isOpen,
                         child: ScrapPopupPanelFonts(
                           isOpen: isOpen,
                           value: scrapStyle.font,
                           onFamilyChanged: _handleFamilyChanged,
                         ),
-                        isOpen: isOpen,
                       ),
                     ),
                   ],
@@ -133,14 +133,14 @@ class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
                       index: 2,
                       openHeight: 166,
                       childBuilder: (bool isOpen) => _MenuItem(
+                          isOpen: isOpen,
                           child: ScrapPopupPanelColor(
                             swatchColors: fgColors,
                             isOpen: isOpen,
                             onColorPicked: _handleFgColorChanged,
                             value: scrapStyle.fgColor,
                             label: "Color",
-                          ),
-                          isOpen: isOpen),
+                          )),
                     ),
 
                     /// BgColor
@@ -150,14 +150,14 @@ class _ScrapPopupEditorState extends State<ScrapPopupEditor> {
                       index: 3,
                       openHeight: 166,
                       childBuilder: (bool isOpen) => _MenuItem(
+                          isOpen: isOpen,
                           child: ScrapPopupPanelColor(
                             swatchColors: bgColors,
                             isOpen: isOpen,
                             onColorPicked: _handleBgColorChanged,
                             value: scrapStyle.bgColor,
                             label: "Background",
-                          ),
-                          isOpen: isOpen),
+                          )),
                     ),
                   ],
                   if (row3Height > 0) ...[

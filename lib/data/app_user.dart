@@ -22,7 +22,9 @@ class AppUser with _$AppUser {
 
   String? getDisplayName() {
     String? result = firstName;
-    if (StringUtils.isNotEmpty(lastName)) result = (result ?? "") + " $lastName";
+    if (StringUtils.isNotEmpty(lastName)) {
+      result = "${result ?? ""} $lastName";
+    }
     return result;
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:firedart/auth/user_gateway.dart';
 import 'package:firedart/firedart.dart';
 import 'package:flutter_folio/data/app_user.dart';
@@ -56,19 +57,19 @@ class DartFirebaseService extends FirebaseService {
   /// CRUD
   @override
   Future<Map<String, dynamic>?> getDoc(List<String> keys) async {
-    // print("getDocData: ${keys.toString()}");
+    // log("getDocData: ${keys.toString()}");
     try {
       Document? d = (await _getDoc(keys)?.get());
       if (d != null) return d.map..['documentId'] = d.id;
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return null;
   }
 
   @override
   Future<List<Map<String, dynamic>>?> getCollection(List<String> keys) async {
-    // print("getDocStream: ${keys.toString()}");
+    // log("getDocStream: ${keys.toString()}");
     Page<Document>? docs = (await _getCollection(keys)?.get());
     if (docs != null) {
       for (final d in docs) {
@@ -81,7 +82,7 @@ class DartFirebaseService extends FirebaseService {
   // Streams
   @override
   Stream<Map<String, dynamic>>? getDocStream(List<String> keys) {
-    // print("getDocStream: ${keys.toString()}");
+    // log("getDocStream: ${keys.toString()}");
     return _getDoc(keys)?.stream.map((d) {
       final map = d?.map ?? {};
       return map..['documentId'] = d?.id;
@@ -90,7 +91,7 @@ class DartFirebaseService extends FirebaseService {
 
   @override
   Stream<List<Map<String, dynamic>>>? getListStream(List<String> keys) {
-    // print("getListStream: ${keys.toString()}");
+    // log("getListStream: ${keys.toString()}");
     return _getCollection(keys)?.stream.map(
       (List<Document> docs) {
         return docs.map((d) => d.map..['documentId'] = d.id).toList();
@@ -116,7 +117,7 @@ class DartFirebaseService extends FirebaseService {
   @override
   Future<void> deleteDoc(List<String> keys) async {
     await firestore.document(getPathFromKeys(keys)).delete().catchError((Object e) {
-      print(e);
+      log(e.toString());
     });
   }
 
@@ -128,14 +129,14 @@ class DartFirebaseService extends FirebaseService {
   DocumentReference? _getDoc(List<String> keys) {
     if (checkKeysForNull(keys) == false) return null;
     DocumentReference docRef = firestore.document(getPathFromKeys(keys));
-    //print("getDoc: " + docRef.path);
+    //log("getDoc: " + docRef.path);
     return docRef;
   }
 
   CollectionReference? _getCollection(List<String> keys) {
     if (checkKeysForNull(keys) == false) return null;
     final colRef = firestore.collection(getPathFromKeys(keys));
-    //print("Got path: " + colRef.path);
+    //log("Got path: " + colRef.path);
     return colRef;
   }
 }

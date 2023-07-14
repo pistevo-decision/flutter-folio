@@ -18,7 +18,7 @@ class EditorPage extends StatefulWidget {
   final bool readOnly;
 
   @override
-  _EditorPageState createState() => _EditorPageState();
+  State<EditorPage> createState() => _EditorPageState();
 }
 
 class _EditorPageState extends State<EditorPage> {

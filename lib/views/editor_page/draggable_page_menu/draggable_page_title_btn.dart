@@ -26,7 +26,7 @@ class DraggablePageTitleBtn extends StatefulWidget {
   final bool isDragFeedback;
 
   @override
-  _DraggablePageTitleBtnState createState() => _DraggablePageTitleBtnState();
+  State<DraggablePageTitleBtn> createState() => _DraggablePageTitleBtnState();
 }
 
 class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
@@ -35,13 +35,13 @@ class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
 
   @override
   Widget build(BuildContext context) {
-    void _handleTitleChanged(String value) {
+    void handleTitleChanged(String value) {
       _textDebounce.run(() {
         UpdatePageCommand().run(widget.page.copyWith(title: value));
       });
     }
 
-    Widget _wrapDraggable(Widget child) {
+    Widget wrapDraggable(Widget child) {
       return MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Draggable<ScrapPageData>(
@@ -52,7 +52,7 @@ class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
             onDragStarted: _handleDragStart,
             onDragEnd: _handleDragEnd,
             onDraggableCanceled: (_, __) => widget.onDragCancelled?.call(),
-            childWhenDragging: Opacity(child: child, opacity: .4),
+            childWhenDragging: Opacity(opacity: .4, child: child),
             child: child),
       );
     }
@@ -71,7 +71,7 @@ class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
 
     Widget innerContent = Stack(children: [
       /// In mouse mode, our background is draggable, in touch mode its not because we want the list itself to be scrollable.
-      touchMode == false ? _wrapDraggable(bgWidget) : bgWidget,
+      touchMode == false ? wrapDraggable(bgWidget) : bgWidget,
 
       ///Content Row
       Positioned.fill(
@@ -84,7 +84,7 @@ class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
           widget.isSelected
               ? InlineTextEditor(
                   label,
-                  onChanged: _handleTitleChanged,
+                  onChanged: handleTitleChanged,
                   enableContextMenu: false,
                   style: TextStyles.body3.copyWith(color: theme.accent1),
                   width: 120,
@@ -94,7 +94,7 @@ class _DraggablePageTitleBtnState extends State<DraggablePageTitleBtn> {
           //
           const Spacer(),
           if (!widget.isDragFeedback) ...[
-            _wrapDraggable(
+            wrapDraggable(
               _FadingDragHandle(
                 width: 40,
                 height: double.infinity,

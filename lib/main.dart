@@ -24,7 +24,7 @@ void main() async {
       // Increase Skia cache size to support bigger images.
       const int megabyte = 1000000;
       SystemChannels.skia.invokeMethod('Skia.setResourceCacheMaxBytes', 512 * megabyte);
-      // TODO: cant' await on invokeMethod due to https://github.com/flutter/flutter/issues/77018  so awaiting on Future.delayed instead.
+      //  cant' await on invokeMethod due to https://github.com/flutter/flutter/issues/77018  so awaiting on Future.delayed instead.
       await Future<void>.delayed(Duration.zero);
     }
 
@@ -57,7 +57,7 @@ class AppBootstrapper extends StatefulWidget {
   const AppBootstrapper({Key? key}) : super(key: key);
 
   @override
-  _AppBootstrapperState createState() => _AppBootstrapperState();
+  State<AppBootstrapper> createState() => _AppBootstrapperState();
 }
 
 class _AppBootstrapperState extends State<AppBootstrapper> {
@@ -83,7 +83,7 @@ class _AppBootstrapperState extends State<AppBootstrapper> {
   Widget build(BuildContext context) {
     // Get the current AppTheme so we can generate a ThemeData for the MaterialApp
     AppTheme theme = context.select((AppModel m) => m.theme);
-    // TODO-SNIPPET: Using visual density
+    // Using visual density
     // Generate ThemeData from our own custom AppTheme object
     ThemeData materialTheme = theme.toThemeData();
     // Determine the density we want, based on AppModel.enableTouchMode
@@ -96,7 +96,7 @@ class _AppBootstrapperState extends State<AppBootstrapper> {
       title: "Flutter Folio",
       debugShowCheckedModeBanner: false,
       theme: materialTheme,
-      // Use a custom route/delegate to change navigation // TODO: Replace with VRouter/NavStack
+      // Use a custom route/delegate to change navigation //  Replace with VRouter/NavStack
       routeInformationParser: routeParser,
       routerDelegate: router,
     );

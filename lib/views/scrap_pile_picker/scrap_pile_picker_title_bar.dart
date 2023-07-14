@@ -32,13 +32,13 @@ class ScrapPilePickerTitleBar extends StatelessWidget {
                 TextBtn("Select ${isAllSelected ? "None" : "All"}", onPressed: onSelectAllPressed),
                 const Spacer(),
                 SimpleBtn(
+                    onPressed: onClosePressed,
                     child: AnimatedPadding(
                       curve: Curves.easeOut,
                       duration: Times.fast,
                       padding: EdgeInsets.all(touchMode ? 4 : 0),
                       child: const MaterialIcon(Icons.close),
-                    ),
-                    onPressed: onClosePressed)
+                    ))
               ],
             ),
           Positioned.fill(

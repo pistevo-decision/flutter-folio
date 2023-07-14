@@ -13,7 +13,7 @@ class ScrapPopupPanelButtonStrip extends StatefulWidget {
   final PlacedScrapItem scrap;
 
   @override
-  _ScrapPopupPanelButtonStripState createState() => _ScrapPopupPanelButtonStripState();
+  State<ScrapPopupPanelButtonStrip> createState() => _ScrapPopupPanelButtonStripState();
 }
 
 class _ScrapPopupPanelButtonStripState extends State<ScrapPopupPanelButtonStrip> with LoadingStateMixin {
@@ -36,8 +36,8 @@ class _ScrapPopupPanelButtonStripState extends State<ScrapPopupPanelButtonStrip>
               mainAxisAlignment: MainAxisAlignment.center,
               separatorBuilder: () => HSpace.sm,
               children: [
-                _IconBtn(onPressed: isLoading ? null : _handleSendBackPressed, icon: AppIcons.send_backward),
-                _IconBtn(onPressed: isLoading ? null : _handleMoveForwardPressed, icon: AppIcons.move_forward),
+                _IconBtn(onPressed: isLoading ? null : _handleSendBackPressed, icon: AppIcons.sendBackward),
+                _IconBtn(onPressed: isLoading ? null : _handleMoveForwardPressed, icon: AppIcons.moveForward),
                 _IconBtn(
                     isSelected: isCoverPhoto,
                     onPressed: disableCoverPhotoBtn ? null : _handleCoverPhotoPressed,
@@ -77,11 +77,11 @@ class _IconBtn extends StatelessWidget {
     AppTheme theme = context.watch();
     return Flexible(
       child: SimpleBtn(
+        onPressed: onPressed,
         child: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: AppIcon(icon, color: isSelected ? theme.accent1 : theme.greyStrong, size: 16)),
-        onPressed: onPressed,
       ),
     );
   }

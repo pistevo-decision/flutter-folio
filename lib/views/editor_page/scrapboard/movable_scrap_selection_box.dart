@@ -90,7 +90,7 @@ class MovableScrapSelectionBoxState extends State<MovableScrapSelectionBox> {
   }
 
   void _handleScrollWheelEvent(PointerScrollEvent signal) {
-    //print("${signal.scrollDelta.dy} @ ${TimeUtils.nowMillis}");
+    //log("${signal.scrollDelta.dy} @ ${TimeUtils.nowMillis}");
     double dir = signal.scrollDelta.dy > 0 ? -1 : 1;
     widget.onZoomed(dir * .1);
     _zoomDebounce.run(() => widget.onDragEnded.call());

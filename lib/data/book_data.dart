@@ -10,7 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book_data.freezed.dart';
 part 'book_data.g.dart';
 
-enum ContentType { Photo, Text, Emoji, Hidden }
+enum ContentType { photo, text, emoji, hidden }
 
 abstract class FirebaseDoc {
   String get documentId;
@@ -135,9 +135,9 @@ class PlacedScrapItem with _$PlacedScrapItem implements FirebaseDoc {
 
   String get transformHash => "$documentId${(dx).round()}${(dy).round()}${(rot).round()}${(scale).round()}";
 
-  bool get isPhoto => contentType == ContentType.Photo;
-  bool get isEmoji => contentType == ContentType.Emoji;
-  bool get isText => contentType == ContentType.Text;
+  bool get isPhoto => contentType == ContentType.photo;
+  bool get isEmoji => contentType == ContentType.emoji;
+  bool get isText => contentType == ContentType.text;
 
   static PlacedScrapItem fromBoxData(ScrapData<PlacedScrapItem> item) {
     return item.data.copyWith(
@@ -166,32 +166,32 @@ class BoxStyle with _$BoxStyle {
   factory BoxStyle({
     Color bgColor,
     Color fgColor,
-    @Default(BoxFonts.Lato) BoxFonts font,
+    @Default(BoxFonts.lato) BoxFonts font,
     @Default(TextAlign.start) TextAlign align,
   }) = _BoxStyle;
 
   factory BoxStyle.fromJson(Map<String, dynamic> json) => _$BoxStyleFromJson(json);
 }
 
-enum BoxFonts { Caveat, PathwayGothicOne, Amiri, Lato, Mali, AlfaSlabOne }
+enum BoxFonts { caveat, pathwayGothicOne, amiri, lato, mali, alfaSlabOne }
 
 String boxFontToDisplay(BoxFonts? font) {
-  if (font == BoxFonts.Caveat) return "Caveat";
-  if (font == BoxFonts.PathwayGothicOne) return "Pathway Gothic One";
-  if (font == BoxFonts.Amiri) return "Amiri";
-  if (font == BoxFonts.Lato) return "Lato";
-  if (font == BoxFonts.Mali) return "Mali";
-  if (font == BoxFonts.AlfaSlabOne) return "Alfa Slab One";
+  if (font == BoxFonts.caveat) return "Caveat";
+  if (font == BoxFonts.pathwayGothicOne) return "Pathway Gothic One";
+  if (font == BoxFonts.amiri) return "Amiri";
+  if (font == BoxFonts.lato) return "Lato";
+  if (font == BoxFonts.mali) return "Mali";
+  if (font == BoxFonts.alfaSlabOne) return "Alfa Slab One";
   return "Unknown";
 }
 
 String boxFontToFamily(BoxFonts? font) {
-  if (font == BoxFonts.Caveat) return "Caveat";
-  if (font == BoxFonts.PathwayGothicOne) return "PathwayGothicOne";
-  if (font == BoxFonts.Amiri) return "Amiri";
-  if (font == BoxFonts.Lato) return "Lato";
-  if (font == BoxFonts.Mali) return "Mali";
-  if (font == BoxFonts.AlfaSlabOne) return "AlfaSlabOne";
+  if (font == BoxFonts.caveat) return "Caveat";
+  if (font == BoxFonts.pathwayGothicOne) return "PathwayGothicOne";
+  if (font == BoxFonts.amiri) return "Amiri";
+  if (font == BoxFonts.lato) return "Lato";
+  if (font == BoxFonts.mali) return "Mali";
+  if (font == BoxFonts.alfaSlabOne) return "AlfaSlabOne";
   return "Unknown";
 }
 

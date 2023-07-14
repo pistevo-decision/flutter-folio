@@ -11,7 +11,7 @@ class ScrapPopupPanelFonts extends StatelessWidget {
   final BoxFonts value;
   final void Function(BoxFonts value) onFamilyChanged;
   const ScrapPopupPanelFonts(
-      {Key? key, required this.isOpen, this.value = BoxFonts.AlfaSlabOne, required this.onFamilyChanged})
+      {Key? key, required this.isOpen, this.value = BoxFonts.alfaSlabOne, required this.onFamilyChanged})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -55,26 +55,26 @@ class ScrapPopupPanelFonts extends StatelessWidget {
                     const PanelHeader(label: "Font"),
                     VSpace(Insets.sm),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(child: _FontBtn(value, font: BoxFonts.Caveat, onPressed: onFamilyChanged)),
+                        Expanded(child: _FontBtn(value, font: BoxFonts.caveat, onPressed: onFamilyChanged)),
                         HSpace(Insets.sm),
                         Expanded(
                             flex: 2,
-                            child: _FontBtn(value, font: BoxFonts.PathwayGothicOne, onPressed: onFamilyChanged)),
+                            child: _FontBtn(value, font: BoxFonts.pathwayGothicOne, onPressed: onFamilyChanged)),
                         HSpace(Insets.sm),
-                        Expanded(child: _FontBtn(value, font: BoxFonts.Amiri, onPressed: onFamilyChanged)),
+                        Expanded(child: _FontBtn(value, font: BoxFonts.amiri, onPressed: onFamilyChanged)),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.center,
                     ),
                     VSpace(Insets.sm),
                     Row(
                       children: [
-                        Expanded(child: _FontBtn(value, font: BoxFonts.Lato, onPressed: onFamilyChanged)),
+                        Expanded(child: _FontBtn(value, font: BoxFonts.lato, onPressed: onFamilyChanged)),
                         HSpace(Insets.sm),
-                        Expanded(child: _FontBtn(value, font: BoxFonts.Mali, onPressed: onFamilyChanged)),
+                        Expanded(child: _FontBtn(value, font: BoxFonts.mali, onPressed: onFamilyChanged)),
                         HSpace(Insets.sm),
                         Expanded(
-                            flex: 2, child: _FontBtn(value, font: BoxFonts.AlfaSlabOne, onPressed: onFamilyChanged)),
+                            flex: 2, child: _FontBtn(value, font: BoxFonts.alfaSlabOne, onPressed: onFamilyChanged)),
                       ],
                     ),
                   ],

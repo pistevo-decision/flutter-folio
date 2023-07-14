@@ -11,7 +11,7 @@ import 'package:flutter_folio/core_packages.dart';
 import 'package:flutter_folio/data/book_data.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-enum ColType { Name, Modified, Created }
+enum ColType { name, modified, created }
 
 class CoversSortableList extends StatefulWidget {
   final List<ScrapBookData> books;
@@ -26,7 +26,7 @@ class CoversSortableList extends StatefulWidget {
 
 class _CoversSortableListState extends State<CoversSortableList> {
   bool _ascending = true;
-  ColType _currentCol = ColType.Name;
+  ColType _currentCol = ColType.name;
 
   final ScrollController _scrollController = ScrollController();
   @override
@@ -62,8 +62,8 @@ class _CoversSortableListState extends State<CoversSortableList> {
                         Expanded(
                           child: SortableListHeader(
                             "Name",
-                            onPressed: () => _handleColumnPressed(ColType.Name),
-                            sortDir: getSort(ColType.Name),
+                            onPressed: () => _handleColumnPressed(ColType.name),
+                            sortDir: getSort(ColType.name),
                           ),
                         ),
                         if (showModifier)
@@ -71,8 +71,8 @@ class _CoversSortableListState extends State<CoversSortableList> {
                             width: 150,
                             child: SortableListHeader(
                               "Last Modified",
-                              onPressed: () => _handleColumnPressed(ColType.Modified),
-                              sortDir: getSort(ColType.Modified),
+                              onPressed: () => _handleColumnPressed(ColType.modified),
+                              sortDir: getSort(ColType.modified),
                             ),
                           ),
                         if (showCreated)
@@ -80,8 +80,8 @@ class _CoversSortableListState extends State<CoversSortableList> {
                             width: 150,
                             child: SortableListHeader(
                               "Date Created",
-                              onPressed: () => _handleColumnPressed(ColType.Created),
-                              sortDir: getSort(ColType.Created),
+                              onPressed: () => _handleColumnPressed(ColType.created),
+                              sortDir: getSort(ColType.created),
                             ),
                           ),
                       ],
@@ -95,7 +95,7 @@ class _CoversSortableListState extends State<CoversSortableList> {
                   child: Padding(
                     padding: EdgeInsets.only(left: Insets.offset, right: Insets.offset - 16, bottom: Insets.offset),
                     child: StyledScrollbar(
-                      // Fixes a bug on macOs where flutter seems to show 2 scrollbars TODO: Log and reproduce a bug on this
+                      // Fixes a bug on macOs where flutter seems to show 2 scrollbars  Log and reproduce a bug on this
                       enabled: DeviceOS.isMacOS == false,
                       controller: _scrollController,
                       child: ListView.builder(
@@ -124,21 +124,21 @@ class _CoversSortableListState extends State<CoversSortableList> {
   Iterable<ScrapBookData> _sortedBooks(List<ScrapBookData> books) {
     if (_ascending) {
       switch (_currentCol) {
-        case ColType.Name:
+        case ColType.name:
           return books.orderBy((book) => book.title);
         // The times are reverse-sorted, as we display them as "time ago" if "time ago" goes up, date goes down...
-        case ColType.Modified:
+        case ColType.modified:
           return books.orderByDescending((book) => book.lastModifiedTime);
-        case ColType.Created:
+        case ColType.created:
           return books.orderBy((book) => book.creationTime);
       }
     } else {
       switch (_currentCol) {
-        case ColType.Name:
+        case ColType.name:
           return books.orderByDescending((book) => book.title);
-        case ColType.Modified:
+        case ColType.modified:
           return books.orderBy((book) => book.lastModifiedTime);
-        case ColType.Created:
+        case ColType.created:
           return books.orderByDescending((book) => book.creationTime);
       }
     }

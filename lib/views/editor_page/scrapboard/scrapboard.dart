@@ -79,11 +79,11 @@ class ScrapboardState<T> extends State<Scrapboard<T>> with RawKeyboardListenerMi
 
   @override
   Widget build(BuildContext context) {
-    final _selected = _getSelectedBoxInstances();
+    final selected = _getSelectedBoxInstances();
     // If a singe item is selected, use the itemControlsBuilder to show any item controls provided by the parent widget.
     Widget? itemControls;
-    if (_selected.isNotEmpty) {
-      itemControls = widget.itemControlsBuilder?.call(_selected.first.data);
+    if (selected.isNotEmpty) {
+      itemControls = widget.itemControlsBuilder?.call(selected.first.data);
     }
     return Scaffold(
       body: Stack(
@@ -174,7 +174,7 @@ class ScrapboardState<T> extends State<Scrapboard<T>> with RawKeyboardListenerMi
   GlobalKey<MovableScrapState> _getBoxKey(String id) {
     if (!_boxKeysById.containsKey(id)) {
       _boxKeysById[id] = GlobalKey<MovableScrapState>();
-      //print("CreateKey: $id");
+      //log("CreateKey: $id");
     }
     return _boxKeysById[id]!;
   }
@@ -207,7 +207,7 @@ class ScrapboardState<T> extends State<Scrapboard<T>> with RawKeyboardListenerMi
   }
 
   void _handleZoom(ScrapData<T> boxData, double delta) {
-    //print(delta);
+    //log(delta);
     boxData.size *= 1 + delta;
     boxData.size = _clampBoxSize(boxData);
     widget.onTranslated?.call(boxData);

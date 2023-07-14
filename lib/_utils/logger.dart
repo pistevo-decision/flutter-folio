@@ -3,17 +3,18 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-_Dispatcher logHistory = _Dispatcher("");
+Dispatcher logHistory = Dispatcher("");
 
 void log(String? value) {
   String v = value ?? "";
-  logHistory.value = v + "\n" + logHistory.value;
-  if (kReleaseMode == false) {
+  logHistory.value = "$v\n${logHistory.value}";
+
+  if (kDebugMode) {
     print(v);
   }
 }
 
-void logError(String? value) => log("[ERROR] " + (value ?? ""));
+void logError(String? value) => log("[ERROR] ${value ?? ""}");
 
 // Take from: https://flutter.dev/docs/testing/errors
 void initLogger(VoidCallback runApp) {
@@ -25,10 +26,10 @@ void initLogger(VoidCallback runApp) {
     };
     runApp.call();
   }, (Object error, StackTrace stack) {
-    logError(stack.toString());
+    logError('${error.toString()} \nStack:\n${stack.toString()}\n-----------');
   });
 }
 
-class _Dispatcher extends ValueNotifier<String> {
-  _Dispatcher(String value) : super(value);
+class Dispatcher extends ValueNotifier<String> {
+  Dispatcher(String value) : super(value);
 }

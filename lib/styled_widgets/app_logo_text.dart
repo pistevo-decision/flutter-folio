@@ -13,7 +13,7 @@ class AppLogoText extends StatelessWidget {
       "assets/images/logos/flutterfolio-logo.png",
       fit: BoxFit.contain,
       color: color ?? theme.accent1,
-      //TODO: Log bug for blurry image filtering on windows
+      // Log bug for blurry image filtering on windows
       filterQuality: FilterQuality.high,
     );
     return (constraints == null) ? img : ConstrainedBox(constraints: constraints!, child: img);

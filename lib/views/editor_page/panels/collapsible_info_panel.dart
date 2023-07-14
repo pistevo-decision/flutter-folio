@@ -11,7 +11,7 @@ class CollapsibleInfoPanel extends StatefulWidget {
   final double height;
 
   @override
-  _CollapsibleInfoPanelState createState() => _CollapsibleInfoPanelState();
+  State<CollapsibleInfoPanel> createState() => _CollapsibleInfoPanelState();
 }
 
 class _CollapsibleInfoPanelState extends State<CollapsibleInfoPanel> {

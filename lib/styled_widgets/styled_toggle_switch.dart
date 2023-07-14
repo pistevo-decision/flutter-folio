@@ -26,7 +26,7 @@ class StyledToggleSwitch extends StatefulWidget {
   final String tooltip2;
 
   @override
-  _StyledToggleSwitchState createState() => _StyledToggleSwitchState();
+  State<StyledToggleSwitch> createState() => _StyledToggleSwitchState();
 }
 
 class _StyledToggleSwitchState extends State<StyledToggleSwitch> {
@@ -52,13 +52,13 @@ class _StyledToggleSwitchState extends State<StyledToggleSwitch> {
             children: [
               _BtnWithTooltip(
                 onPressed: !widget.value ? null : () => widget.onToggled?.call(false),
-                child: _buildIcon(widget.icon1, widget.materialIcon1),
                 toolTip: widget.tooltip1,
+                child: _buildIcon(widget.icon1, widget.materialIcon1),
               ),
               _BtnWithTooltip(
                 onPressed: !widget.value ? () => widget.onToggled?.call(true) : null,
-                child: _buildIcon(widget.icon2, widget.materialIcon2),
                 toolTip: widget.tooltip2,
+                child: _buildIcon(widget.icon2, widget.materialIcon2),
               ),
             ],
           )),
@@ -99,7 +99,9 @@ class _StyledToggleSwitchState extends State<StyledToggleSwitch> {
     color ??= theme.grey;
     double size = 16;
     if (appIcon != null) return AppIcon(appIcon, color: color, size: size);
-    if (materialIcon != null) return Icon(materialIcon, color: color, size: size);
+    if (materialIcon != null) {
+      return Icon(materialIcon, color: color, size: size);
+    }
     return Container();
   }
 }

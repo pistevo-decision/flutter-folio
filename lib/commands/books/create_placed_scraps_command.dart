@@ -10,7 +10,7 @@ class CreatePlacedScrapCommand extends BaseAppCommand {
   Future<void> run({required String pageId, Size? size, required List<ScrapItem> scraps}) async {
     if (scraps.isEmpty) return;
     List<PlacedScrapItem> scrapsToPlace = scraps.map((scrap) {
-      bool isText = scrap.contentType == ContentType.Text;
+      bool isText = scrap.contentType == ContentType.text;
       // Choose some default width for new items
       double contentWidth = 300;
       if (isText) contentWidth = 500;
@@ -34,7 +34,7 @@ class CreatePlacedScrapCommand extends BaseAppCommand {
                 align: TextAlign.left,
                 bgColor: Colors.transparent,
                 fgColor: Colors.black,
-                font: BoxFonts.Lato,
+                font: BoxFonts.lato,
               )
             : null,
         data: scrap.data,

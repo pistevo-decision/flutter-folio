@@ -54,7 +54,7 @@
 //   @override
 //   void initState() {
 //     super.initState();
-//     print("Is LoggedIn =${firebase.isSignedIn}");
+//     log("Is LoggedIn =${firebase.isSignedIn}");
 //     _signedIn = firebase.isSignedIn;
 //     _togglePage();
 //   }
@@ -101,7 +101,7 @@
 //               ? AnimatedBuilder(
 //                   animation: _driver,
 //                   builder: (BuildContext context, Widget widget) {
-//                     print('build');
+//                     log('build');
 //                     return Center(
 //                       child: Column(
 //                         mainAxisSize: MainAxisSize.min,
@@ -127,7 +127,7 @@
 //                               StreamBuilder<List<PlacedScrapItem>>(
 //                                 stream: firebase.allPlacedScrapsStream(bookId: "893714", pageId: _currentPage),
 //                                 builder: (BuildContext, data) {
-//                                   print("$_currentPage ${data.hasData}, ${data.hasData}");
+//                                   log("$_currentPage ${data.hasData}, ${data.hasData}");
 //                                   return FlatButton(
 //                                       onPressed: _togglePage,
 //                                       child: Text("$_currentPage.boxCount = ${data.data?.length ?? ""}"));
@@ -171,7 +171,7 @@
 //                     //     stream: firebase.allBooksStream(),
 //                     //     builder: (context, snapshot) {
 //                     //       if (snapshot.hasError) {
-//                     //         print(snapshot.error);
+//                     //         log(snapshot.error);
 //                     //       }
 //                     //       return snapshot.hasData
 //                     //           ? ListView(

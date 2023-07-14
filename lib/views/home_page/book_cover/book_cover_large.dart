@@ -37,7 +37,7 @@ class LargeBookCover extends StatelessWidget {
                   maxLength: 22,
                   onFocusOut: _handleTitleEditingEnded,
                   promptText: "Add Title",
-                  key: ValueKey("title" + book.title),
+                  key: ValueKey("title${book.title}"),
                   width: min(constraints.maxWidth, 550),
                   style: TextStyles.h1.copyWith(color: theme.surface1),
                 ),
@@ -61,12 +61,12 @@ class LargeBookCover extends StatelessWidget {
 
                 /// Desc
                 InlineTextEditor(book.desc,
-                    key: ValueKey("desc" + book.desc),
+                    key: ValueKey("desc${book.desc}"),
                     promptText: "Add Description",
                     onFocusOut: _handleDescEditingEnded,
                     width: 300,
                     // SB: Set web to 1 instead of 1.8, it was causing rendering issues where the text would get cut-off.
-                    // TODO: Log bug on this ^
+                    //  Log bug on this ^
                     style: TextStyles.body1.copyWith(height: kIsWeb ? 1 : 1.8, color: theme.greyWeak),
                     maxLength: 30 * 3,
                     maxLines: 3),

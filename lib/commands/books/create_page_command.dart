@@ -29,7 +29,7 @@ class CreatePageCommand extends BaseAppCommand {
     String pageId = await firebase.addPage(newPage);
 
     // Add a hidden scrap, this sidesteps a bug in firedart regarding empty collections.
-    ScrapItem emptyScrap = ScrapItem(bookId: newPage.bookId, contentType: ContentType.Hidden, data: "");
+    ScrapItem emptyScrap = ScrapItem(bookId: newPage.bookId, contentType: ContentType.hidden, data: "");
     await CreatePlacedScrapCommand().run(pageId: pageId, size: Size.zero, scraps: [emptyScrap]);
   }
 }

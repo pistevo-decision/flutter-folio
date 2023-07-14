@@ -37,7 +37,7 @@ class HomeNavToggleMenu extends StatelessWidget {
                   style:
                       TextStyles.body1.copyWith(height: 1.2, color: showListView ? theme.greyMedium : theme.surface1),
                   children: <TextSpan>[
-                    if (name != null) TextSpan(text: " " + name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                    if (name != null) TextSpan(text: " $name", style: const TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: ". ${breakText ? "\n" : ""}You've created "),
                     TextSpan(
                         text: " $bookCount folio${bookCount == 1 ? "" : "s"}",
@@ -56,9 +56,9 @@ class HomeNavToggleMenu extends StatelessWidget {
                 HSpace.med,
                 StyledToggleSwitch(
                     value: showListView,
-                    icon1: AppIcons.toggle_carousel,
+                    icon1: AppIcons.toggleCarousel,
                     tooltip1: "Grid View",
-                    icon2: AppIcons.toggle_list,
+                    icon2: AppIcons.toggleList,
                     tooltip2: "List View",
                     onToggled: onToggled),
               ],

@@ -30,7 +30,7 @@ class _UserProfileFormState extends State<UserProfileForm> {
     super.dispose();
     // When we're closed, submit any changes to the user.
     // Use a microtask cause this will trigger some builds.
-    // TODO: remove this after AppRouter re-write
+    //  remove this after AppRouter re-write
     if (_user != null) {
       scheduleMicrotask(() {
         UpdateUserCommand().run(_user!);
@@ -47,7 +47,7 @@ class _UserProfileFormState extends State<UserProfileForm> {
 
     return Stack(
       children: [
-        Align(alignment: Alignment.topLeft, child: UiText(text: "v" + AppModel.kVersion, style: TextStyles.caption)),
+        Align(alignment: Alignment.topLeft, child: UiText(text: "v${AppModel.kVersion}", style: TextStyles.caption)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -111,21 +111,24 @@ class _UserProfileFormState extends State<UserProfileForm> {
 
   void _handleProfileImgPressed() async {
     List<PickedImage> paths = await PickImagesCommand().run();
-    CloudStorageService cloudStorage = context.read<CloudStorageService>();
-    List<CloudinaryResponse> uploads = await cloudStorage.multiUpload(images: paths);
-
-    // Make a command that picks images, uploads them, and returns a list of remote paths?
-    for (final u in uploads) {
-      log(u.secureUrl);
-    }
-
-    // Update firebase
-    if (uploads.isNotEmpty) {
-      AppModel m = context.read();
-      if (m.currentUser != null) {
-        UpdateUserCommand().run(m.currentUser!.copyWith(imageUrl: uploads[0].secureUrl));
+    CloudStorageService cloudStorage;
+    if (context.mounted) {
+      cloudStorage = context.read<CloudStorageService>();
+      List<CloudinaryResponse> uploads = await cloudStorage.multiUpload(images: paths);
+      // Make a command that picks images, uploads them, and returns a list of remote paths?
+      for (final u in uploads) {
+        log(u.secureUrl);
       }
-      m.scheduleSave();
+      // Update firebase
+      if (uploads.isNotEmpty) {
+        if (context.mounted) {
+          AppModel m = context.read();
+          if (m.currentUser != null) {
+            UpdateUserCommand().run(m.currentUser!.copyWith(imageUrl: uploads[0].secureUrl));
+          }
+          m.scheduleSave();
+        }
+      }
     }
   }
 

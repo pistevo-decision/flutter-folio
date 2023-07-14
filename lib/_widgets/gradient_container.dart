@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class GradientContainer extends StatelessWidget {
   const GradientContainer(this.colors, this.stops,
-      {Key? key, this.child, this.width, this.height, this.alignment, this.begin, this.end})
+      {Key? key,
+      this.child,
+      this.width,
+      this.height,
+      this.alignment,
+      this.begin,
+      this.end})
       : super(key: key);
   final double? width;
   final double? height;
@@ -16,7 +22,6 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) => IgnorePointer(
         child: Container(
-          child: child,
           width: width,
           height: height,
           alignment: alignment,
@@ -28,12 +33,14 @@ class GradientContainer extends StatelessWidget {
               stops: stops,
             ),
           ),
+          child: child,
         ),
       );
 }
 
 class HzGradient extends StatelessWidget {
-  const HzGradient(this.colors, this.stops, {Key? key, this.child, this.width, this.height, this.alignment})
+  const HzGradient(this.colors, this.stops,
+      {Key? key, this.child, this.width, this.height, this.alignment})
       : super(key: key);
   final List<Color> colors;
   final List<double> stops;
@@ -43,12 +50,13 @@ class HzGradient extends StatelessWidget {
   final Alignment? alignment;
 
   @override
-  Widget build(BuildContext context) =>
-      GradientContainer(colors, stops, width: width, height: height, alignment: alignment, child: child);
+  Widget build(BuildContext context) => GradientContainer(colors, stops,
+      width: width, height: height, alignment: alignment, child: child);
 }
 
 class VtGradient extends StatelessWidget {
-  const VtGradient(this.colors, this.stops, {Key? key, this.child, this.width, this.height, this.alignment})
+  const VtGradient(this.colors, this.stops,
+      {Key? key, this.child, this.width, this.height, this.alignment})
       : super(key: key);
   final List<Color> colors;
   final List<double> stops;
@@ -62,7 +70,7 @@ class VtGradient extends StatelessWidget {
       width: width,
       height: height,
       alignment: alignment,
-      child: child,
       begin: Alignment.topCenter,
-      end: Alignment.bottomCenter);
+      end: Alignment.bottomCenter,
+      child: child);
 }

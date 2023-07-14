@@ -1,3 +1,4 @@
+import 'package:flutter_folio/_utils/logger.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter_folio/_utils/string_utils.dart';
 import 'package:flutter_folio/app_keys.dart';
@@ -22,7 +23,7 @@ class CloudStorageService {
     }
     // Handle images as "asset" files ios/android
     else if (images.first.asset != null) {
-      print("Uploade from future bytes... ");
+      log("Uploade from future bytes... ");
       futures = images.map((image) {
         return CloudinaryFile.fromFutureByteData(image.asset!.getByteData(), identifier: image.asset!.identifier!);
       }).toList();
@@ -39,7 +40,7 @@ class CloudStorageService {
     );
   }
 
-  // TODO: Transform images on upload, not on request (SB: cloudinaries "eager transforms" were not working, needs more debugging)
+  //  Transform images on upload, not on request (SB: cloudinaries "eager transforms" were not working, needs more debugging)
   static void addMaxSizeToUrlList<T>(List<T> items, String Function(T) getUrl, T Function(T, String) setUrl) {
     for (var i = items.length; i-- > 0;) {
       T item = items.removeAt(i);
