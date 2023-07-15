@@ -1,6 +1,9 @@
-import 'dart:math';
+// ignore: unused_import
+// ignore_for_file: invalid_annotation_target
 
 import 'package:flutter/foundation.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_folio/_utils/time_utils.dart';
 import 'package:flutter_folio/views/editor_page/scrapboard/scrap_data.dart';
@@ -18,8 +21,8 @@ abstract class FirebaseDoc {
 
 /// One book, contains many pages
 @freezed
-@JsonSerializable(explicitToJson: true)
 class ScrapBookData with _$ScrapBookData implements FirebaseDoc {
+  @JsonSerializable(explicitToJson: true)
   const ScrapBookData._();
   factory ScrapBookData({
     @Default("") String documentId,
@@ -67,8 +70,8 @@ class ScrapBookData with _$ScrapBookData implements FirebaseDoc {
 
 // One page in a ScrapBook, contains many placed items's
 @freezed
-@JsonSerializable(explicitToJson: true)
 class ScrapPageData with _$ScrapPageData implements FirebaseDoc {
+  @JsonSerializable(explicitToJson: true)
   const ScrapPageData._();
   factory ScrapPageData({
     @Default("") String documentId,
@@ -86,8 +89,8 @@ class ScrapPageData with _$ScrapPageData implements FirebaseDoc {
 // A scrap that is in the "pile" for some book. Not tied to any specific page.
 // A scrap will capture time and location whenever possible, and optionally contain multiple photos or some text
 @freezed
-@JsonSerializable(explicitToJson: true)
 class ScrapItem with _$ScrapItem implements FirebaseDoc {
+  @JsonSerializable(explicitToJson: true)
   const ScrapItem._();
   factory ScrapItem({
     @Default("") String documentId,
@@ -107,8 +110,8 @@ class ScrapItem with _$ScrapItem implements FirebaseDoc {
 // A Scrap that has been placed onto a page, it has a position, rotation and scale.
 // It may have a reference to a scrapId from the pile, or it may just be a piece of content itself
 @freezed
-@JsonSerializable(explicitToJson: true)
 class PlacedScrapItem with _$PlacedScrapItem implements FirebaseDoc {
+  @JsonSerializable(explicitToJson: true)
   const PlacedScrapItem._();
   factory PlacedScrapItem({
     @Default("") String documentId,
@@ -164,13 +167,23 @@ class PlacedScrapItem with _$PlacedScrapItem implements FirebaseDoc {
 class BoxStyle with _$BoxStyle {
   const BoxStyle._();
   factory BoxStyle({
-    Color bgColor,
-    Color fgColor,
+    @JsonKey(name: "bgColor") @ColorConverter() @Default(Colors.black) Color bgColor,
+    @JsonKey(name: "fgColor") @ColorConverter() @Default(Colors.white) Color fgColor,
     @Default(BoxFonts.lato) BoxFonts font,
     @Default(TextAlign.start) TextAlign align,
   }) = _BoxStyle;
 
   factory BoxStyle.fromJson(Map<String, dynamic> json) => _$BoxStyleFromJson(json);
+}
+
+class ColorConverter implements JsonConverter<Color, String> {
+  const ColorConverter();
+
+  @override
+  Color fromJson(String value) => _colorFromJson(value);
+
+  @override
+  String toJson(Color color) => _colorToJson(color);
 }
 
 enum BoxFonts { caveat, pathwayGothicOne, amiri, lato, mali, alfaSlabOne }

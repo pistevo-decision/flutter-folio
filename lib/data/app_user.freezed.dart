@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_user.dart';
 
@@ -10,40 +12,11 @@ part of 'app_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AppUser _$AppUserFromJson(Map<String, dynamic> json) {
   return _AppUser.fromJson(json);
 }
-
-/// @nodoc
-class _$AppUserTearOff {
-  const _$AppUserTearOff();
-
-  _AppUser call(
-      {String documentId = "",
-      required String email,
-      required String fireId,
-      String? firstName,
-      String? lastName,
-      String? imageUrl}) {
-    return _AppUser(
-      documentId: documentId,
-      email: email,
-      fireId: fireId,
-      firstName: firstName,
-      lastName: lastName,
-      imageUrl: imageUrl,
-    );
-  }
-
-  AppUser fromJson(Map<String, Object> json) {
-    return AppUser.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AppUser = _$AppUserTearOff();
 
 /// @nodoc
 mixin _$AppUser {
@@ -62,7 +35,8 @@ mixin _$AppUser {
 /// @nodoc
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
-      _$AppUserCopyWithImpl<$Res>;
+      _$AppUserCopyWithImpl<$Res, AppUser>;
+  @useResult
   $Res call(
       {String documentId,
       String email,
@@ -73,56 +47,61 @@ abstract class $AppUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
+class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
+    implements $AppUserCopyWith<$Res> {
   _$AppUserCopyWithImpl(this._value, this._then);
 
-  final AppUser _value;
   // ignore: unused_field
-  final $Res Function(AppUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentId = freezed,
-    Object? email = freezed,
-    Object? fireId = freezed,
+    Object? documentId = null,
+    Object? email = null,
+    Object? fireId = null,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      documentId: documentId == freezed
+      documentId: null == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      fireId: fireId == freezed
+      fireId: null == fireId
           ? _value.fireId
           : fireId // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
-  factory _$AppUserCopyWith(_AppUser value, $Res Function(_AppUser) then) =
-      __$AppUserCopyWithImpl<$Res>;
+abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
+  factory _$$_AppUserCopyWith(
+          _$_AppUser value, $Res Function(_$_AppUser) then) =
+      __$$_AppUserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String documentId,
       String email,
@@ -133,45 +112,44 @@ abstract class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
-    implements _$AppUserCopyWith<$Res> {
-  __$AppUserCopyWithImpl(_AppUser _value, $Res Function(_AppUser) _then)
-      : super(_value, (v) => _then(v as _AppUser));
+class __$$_AppUserCopyWithImpl<$Res>
+    extends _$AppUserCopyWithImpl<$Res, _$_AppUser>
+    implements _$$_AppUserCopyWith<$Res> {
+  __$$_AppUserCopyWithImpl(_$_AppUser _value, $Res Function(_$_AppUser) _then)
+      : super(_value, _then);
 
-  @override
-  _AppUser get _value => super._value as _AppUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentId = freezed,
-    Object? email = freezed,
-    Object? fireId = freezed,
+    Object? documentId = null,
+    Object? email = null,
+    Object? fireId = null,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(_AppUser(
-      documentId: documentId == freezed
+    return _then(_$_AppUser(
+      documentId: null == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      fireId: fireId == freezed
+      fireId: null == fireId
           ? _value.fireId
           : fireId // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -181,7 +159,7 @@ class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppUser extends _AppUser {
+class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   _$_AppUser(
       {this.documentId = "",
       required this.email,
@@ -192,10 +170,10 @@ class _$_AppUser extends _AppUser {
       : super._();
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
-      _$_$_AppUserFromJson(json);
+      _$$_AppUserFromJson(json);
 
-  @JsonKey(defaultValue: "")
   @override
+  @JsonKey()
   final String documentId;
   @override
   final String email;
@@ -209,79 +187,85 @@ class _$_AppUser extends _AppUser {
   final String? imageUrl;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppUser(documentId: $documentId, email: $email, fireId: $fireId, firstName: $firstName, lastName: $lastName, imageUrl: $imageUrl)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppUser'))
+      ..add(DiagnosticsProperty('documentId', documentId))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('fireId', fireId))
+      ..add(DiagnosticsProperty('firstName', firstName))
+      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppUser &&
+        (other.runtimeType == runtimeType &&
+            other is _$_AppUser &&
             (identical(other.documentId, documentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.documentId, documentId)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.fireId, fireId) ||
-                const DeepCollectionEquality().equals(other.fireId, fireId)) &&
+                other.documentId == documentId) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.fireId, fireId) || other.fireId == fireId) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
+                other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
+                other.lastName == lastName) &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)));
+                other.imageUrl == imageUrl));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(documentId) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(fireId) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(imageUrl);
 
   @JsonKey(ignore: true)
   @override
-  _$AppUserCopyWith<_AppUser> get copyWith =>
-      __$AppUserCopyWithImpl<_AppUser>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, documentId, email, fireId, firstName, lastName, imageUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
+      __$$_AppUserCopyWithImpl<_$_AppUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AppUserToJson(this);
+    return _$$_AppUserToJson(
+      this,
+    );
   }
 }
 
 abstract class _AppUser extends AppUser {
   factory _AppUser(
-      {String documentId,
-      required String email,
-      required String fireId,
-      String? firstName,
-      String? lastName,
-      String? imageUrl}) = _$_AppUser;
+      {final String documentId,
+      required final String email,
+      required final String fireId,
+      final String? firstName,
+      final String? lastName,
+      final String? imageUrl}) = _$_AppUser;
   _AppUser._() : super._();
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
   @override
-  String get documentId => throw _privateConstructorUsedError;
+  String get documentId;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String get fireId => throw _privateConstructorUsedError;
+  String get fireId;
   @override
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
   @override
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
   @override
-  String? get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$AppUserCopyWith<_AppUser> get copyWith =>
+  _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

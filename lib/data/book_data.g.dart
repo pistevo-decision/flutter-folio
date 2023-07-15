@@ -6,24 +6,23 @@ part of 'book_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ScrapBookData _$_$_ScrapBookDataFromJson(Map<String, dynamic> json) {
-  return _$_ScrapBookData(
-    documentId: json['documentId'] as String? ?? '',
-    key: json['key'] as String?,
-    title: json['title'] as String? ?? '',
-    desc: json['desc'] as String? ?? '',
-    creationTime: json['creationTime'] as int? ?? -1,
-    lastModifiedTime: json['lastModifiedTime'] as int? ?? -1,
-    pageCount: json['pageCount'] as int? ?? 0,
-    imageUrl: json['imageUrl'] as String? ?? '',
-    pageOrder: (json['pageOrder'] as List<dynamic>?)
-            ?.map((e) => e as String)
-            .toList() ??
-        [],
-  );
-}
+_$_ScrapBookData _$$_ScrapBookDataFromJson(Map<String, dynamic> json) =>
+    _$_ScrapBookData(
+      documentId: json['documentId'] as String? ?? "",
+      key: json['key'] as String?,
+      title: json['title'] as String? ?? "",
+      desc: json['desc'] as String? ?? "",
+      creationTime: json['creationTime'] as int? ?? -1,
+      lastModifiedTime: json['lastModifiedTime'] as int? ?? -1,
+      pageCount: json['pageCount'] as int? ?? 0,
+      imageUrl: json['imageUrl'] as String? ?? "",
+      pageOrder: (json['pageOrder'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+    );
 
-Map<String, dynamic> _$_$_ScrapBookDataToJson(_$_ScrapBookData instance) =>
+Map<String, dynamic> _$$_ScrapBookDataToJson(_$_ScrapBookData instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'key': instance.key,
@@ -36,21 +35,20 @@ Map<String, dynamic> _$_$_ScrapBookDataToJson(_$_ScrapBookData instance) =>
       'pageOrder': instance.pageOrder,
     };
 
-_$_ScrapPageData _$_$_ScrapPageDataFromJson(Map<String, dynamic> json) {
-  return _$_ScrapPageData(
-    documentId: json['documentId'] as String? ?? '',
-    key: json['key'] as String?,
-    bookId: json['bookId'] as String? ?? '',
-    title: json['title'] as String? ?? '',
-    desc: json['desc'] as String? ?? '',
-    boxOrder: (json['boxOrder'] as List<dynamic>?)
-            ?.map((e) => e as String)
-            .toList() ??
-        [],
-  );
-}
+_$_ScrapPageData _$$_ScrapPageDataFromJson(Map<String, dynamic> json) =>
+    _$_ScrapPageData(
+      documentId: json['documentId'] as String? ?? "",
+      key: json['key'] as String?,
+      bookId: json['bookId'] as String? ?? "",
+      title: json['title'] as String? ?? "",
+      desc: json['desc'] as String? ?? "",
+      boxOrder: (json['boxOrder'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+    );
 
-Map<String, dynamic> _$_$_ScrapPageDataToJson(_$_ScrapPageData instance) =>
+Map<String, dynamic> _$$_ScrapPageDataToJson(_$_ScrapPageData instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'key': instance.key,
@@ -60,24 +58,23 @@ Map<String, dynamic> _$_$_ScrapPageDataToJson(_$_ScrapPageData instance) =>
       'boxOrder': instance.boxOrder,
     };
 
-_$_ScrapItem _$_$_ScrapItemFromJson(Map<String, dynamic> json) {
-  return _$_ScrapItem(
-    documentId: json['documentId'] as String? ?? '',
-    key: json['key'] as String?,
-    bookId: json['bookId'] as String? ?? '',
-    data: json['data'] as String? ?? '',
-    config: json['config'] as String?,
-    photos:
-        (json['photos'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-            [],
-    creationTime: json['creationTime'] as int? ?? -1,
-    aspect: (json['aspect'] as num?)?.toDouble() ?? 1,
-    contentType:
-        _$enumDecodeNullable(_$ContentTypeEnumMap, json['contentType']),
-  );
-}
+_$_ScrapItem _$$_ScrapItemFromJson(Map<String, dynamic> json) => _$_ScrapItem(
+      documentId: json['documentId'] as String? ?? "",
+      key: json['key'] as String?,
+      bookId: json['bookId'] as String? ?? "",
+      data: json['data'] as String? ?? "",
+      config: json['config'] as String?,
+      photos: (json['photos'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      creationTime: json['creationTime'] as int? ?? -1,
+      aspect: (json['aspect'] as num?)?.toDouble() ?? 1,
+      contentType:
+          $enumDecodeNullable(_$ContentTypeEnumMap, json['contentType']),
+    );
 
-Map<String, dynamic> _$_$_ScrapItemToJson(_$_ScrapItem instance) =>
+Map<String, dynamic> _$$_ScrapItemToJson(_$_ScrapItem instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'key': instance.key,
@@ -90,77 +87,39 @@ Map<String, dynamic> _$_$_ScrapItemToJson(_$_ScrapItem instance) =>
       'contentType': _$ContentTypeEnumMap[instance.contentType],
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
-
 const _$ContentTypeEnumMap = {
-  ContentType.Photo: 'Photo',
-  ContentType.Text: 'Text',
-  ContentType.Emoji: 'Emoji',
-  ContentType.Hidden: 'Hidden',
+  ContentType.photo: 'photo',
+  ContentType.text: 'text',
+  ContentType.emoji: 'emoji',
+  ContentType.hidden: 'hidden',
 };
 
-_$_PlacedScrapItem _$_$_PlacedScrapItemFromJson(Map<String, dynamic> json) {
-  return _$_PlacedScrapItem(
-    documentId: json['documentId'] as String? ?? '',
-    key: json['key'] as String?,
-    bookId: json['bookId'] as String? ?? '',
-    pageId: json['pageId'] as String? ?? '',
-    scrapId: json['scrapId'] as String? ?? '',
-    dx: (json['dx'] as num?)?.toDouble() ?? 0,
-    dy: (json['dy'] as num?)?.toDouble() ?? 0,
-    width: (json['width'] as num?)?.toDouble() ?? 0,
-    height: (json['height'] as num?)?.toDouble() ?? 0,
-    rot: (json['rot'] as num?)?.toDouble() ?? 0,
-    scale: (json['scale'] as num?)?.toDouble() ?? 1,
-    aspect: (json['aspect'] as num?)?.toDouble() ?? 1,
-    contentType:
-        _$enumDecodeNullable(_$ContentTypeEnumMap, json['contentType']),
-    data: json['data'] as String? ?? '',
-    config: json['config'] as String?,
-    boxStyle: json['boxStyle'] == null
-        ? null
-        : BoxStyle.fromJson(json['boxStyle'] as Map<String, dynamic>),
-    creationTime: json['creationTime'] as int? ?? -1,
-    lastModifiedTime: json['lastModifiedTime'] as int? ?? -1,
-  );
-}
+_$_PlacedScrapItem _$$_PlacedScrapItemFromJson(Map<String, dynamic> json) =>
+    _$_PlacedScrapItem(
+      documentId: json['documentId'] as String? ?? "",
+      key: json['key'] as String?,
+      bookId: json['bookId'] as String? ?? "",
+      pageId: json['pageId'] as String? ?? "",
+      scrapId: json['scrapId'] as String? ?? "",
+      dx: (json['dx'] as num?)?.toDouble() ?? 0,
+      dy: (json['dy'] as num?)?.toDouble() ?? 0,
+      width: (json['width'] as num?)?.toDouble() ?? 0,
+      height: (json['height'] as num?)?.toDouble() ?? 0,
+      rot: (json['rot'] as num?)?.toDouble() ?? 0,
+      scale: (json['scale'] as num?)?.toDouble() ?? 1,
+      aspect: (json['aspect'] as num?)?.toDouble() ?? 1,
+      contentType:
+          $enumDecodeNullable(_$ContentTypeEnumMap, json['contentType']),
+      data: json['data'] as String? ?? "",
+      config: json['config'] as String?,
+      boxStyle: json['boxStyle'] == null
+          ? null
+          : BoxStyle.fromJson(json['boxStyle'] as Map<String, dynamic>),
+      creationTime: json['creationTime'] as int? ?? -1,
+      lastModifiedTime: json['lastModifiedTime'] as int? ?? -1,
+    );
 
-Map<String, dynamic> _$_$_PlacedScrapItemToJson(_$_PlacedScrapItem instance) =>
+Map<String, dynamic> _$$_PlacedScrapItemToJson(_$_PlacedScrapItem instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'key': instance.key,
@@ -177,37 +136,39 @@ Map<String, dynamic> _$_$_PlacedScrapItemToJson(_$_PlacedScrapItem instance) =>
       'contentType': _$ContentTypeEnumMap[instance.contentType],
       'data': instance.data,
       'config': instance.config,
-      'boxStyle': instance.boxStyle?.toJson(),
+      'boxStyle': instance.boxStyle,
       'creationTime': instance.creationTime,
       'lastModifiedTime': instance.lastModifiedTime,
     };
 
-_$_BoxStyle _$_$_BoxStyleFromJson(Map<String, dynamic> json) {
-  return _$_BoxStyle(
-    bgColor: _colorFromJson(json['bgColor'] as String),
-    fgColor: _colorFromJson(json['fgColor'] as String),
-    font:
-        _$enumDecodeNullable(_$BoxFontsEnumMap, json['font']) ?? BoxFonts.Lato,
-    align: _$enumDecodeNullable(_$TextAlignEnumMap, json['align']) ??
-        TextAlign.start,
-  );
-}
+_$_BoxStyle _$$_BoxStyleFromJson(Map<String, dynamic> json) => _$_BoxStyle(
+      bgColor: json['bgColor'] == null
+          ? Colors.black
+          : const ColorConverter().fromJson(json['bgColor'] as String),
+      fgColor: json['fgColor'] == null
+          ? Colors.white
+          : const ColorConverter().fromJson(json['fgColor'] as String),
+      font:
+          $enumDecodeNullable(_$BoxFontsEnumMap, json['font']) ?? BoxFonts.lato,
+      align: $enumDecodeNullable(_$TextAlignEnumMap, json['align']) ??
+          TextAlign.start,
+    );
 
-Map<String, dynamic> _$_$_BoxStyleToJson(_$_BoxStyle instance) =>
+Map<String, dynamic> _$$_BoxStyleToJson(_$_BoxStyle instance) =>
     <String, dynamic>{
-      'bgColor': _colorToJson(instance.bgColor),
-      'fgColor': _colorToJson(instance.fgColor),
-      'font': _$BoxFontsEnumMap[instance.font],
-      'align': _$TextAlignEnumMap[instance.align],
+      'bgColor': const ColorConverter().toJson(instance.bgColor),
+      'fgColor': const ColorConverter().toJson(instance.fgColor),
+      'font': _$BoxFontsEnumMap[instance.font]!,
+      'align': _$TextAlignEnumMap[instance.align]!,
     };
 
 const _$BoxFontsEnumMap = {
-  BoxFonts.Caveat: 'Caveat',
-  BoxFonts.PathwayGothicOne: 'PathwayGothicOne',
-  BoxFonts.Amiri: 'Amiri',
-  BoxFonts.Lato: 'Lato',
-  BoxFonts.Mali: 'Mali',
-  BoxFonts.AlfaSlabOne: 'AlfaSlabOne',
+  BoxFonts.caveat: 'caveat',
+  BoxFonts.pathwayGothicOne: 'pathwayGothicOne',
+  BoxFonts.amiri: 'amiri',
+  BoxFonts.lato: 'lato',
+  BoxFonts.mali: 'mali',
+  BoxFonts.alfaSlabOne: 'alfaSlabOne',
 };
 
 const _$TextAlignEnumMap = {
